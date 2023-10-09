@@ -12,7 +12,7 @@ public enum TipoToken {
     // Literales
     IDENTIFIER, STRING, NUMBER,
 
-    // Palabras clave
+    // Palabras reservadas
     AND, ELSE, FALSE, FUN, FOR, IF, NULL, OR,
     PRINT, RETURN, TRUE, VAR, WHILE,
 
