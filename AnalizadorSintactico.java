@@ -17,7 +17,7 @@ public class AnalizadorSintactico implements Parser{
 
     @Override
     public boolean parse(){
-
+        int reduccion = 0;
         return false;
     }
 
