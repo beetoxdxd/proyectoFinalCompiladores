@@ -11,11 +11,11 @@ I0 = {PROGRAM' -> °PROGRAM, PROGRAM -> °DECLARATION, DECLARATION -> °FUN_DECL
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)}     ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)}     ☑       ☑
 
-Ir_a(I0, PROGRAM) = {PROGRAM' -> PROGRAM°} = I1     ☑
+Ir_a(I0, PROGRAM) = {PROGRAM' -> PROGRAM°} = I1     ☑       ☑
 
-Ir_a(I0, DECLARATION) = {PROGRAM -> DECLARATION°} = I2      ☑
+Ir_a(I0, DECLARATION) = {PROGRAM -> DECLARATION°} = I2      ☑       ☑
 
 Ir_a(I0, FUN_DECL) = {DECLARATION -> FUN_DECL °DECLARATION, DECLARATION-> °FUN_DECL DECLARATION,
       DECLARATION -> °VAR_DECL DECLARATION, DECLARATION -> °STATEMENT DECLARATION, DECLARATION -> °,
@@ -30,7 +30,7 @@ Ir_a(I0, FUN_DECL) = {DECLARATION -> FUN_DECL °DECLARATION, DECLARATION-> °FUN
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I3        ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I3        ☑       ☑
 
 Ir_a(I0, VAR_DECL) = {DECLARATION -> VAR_DECL °DECLARATION, DECLARATION -> °FUN_DECL DECLARATION,
       DECLARATION -> °VAR_DECL DECLARATION, DECLARATION -> °STATEMENT DECLARATION, DECLARATION -> °,
@@ -45,7 +45,7 @@ Ir_a(I0, VAR_DECL) = {DECLARATION -> VAR_DECL °DECLARATION, DECLARATION -> °FU
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I4        ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I4        ☑       ☑
 
 Ir_a(I0, STATEMENT) = {DECLARATION -> STATEMENT °DECLARATION, DECLARATION -> °FUN_DECL DECLARATION,
       DECLARATION -> °VAR_DECL DECLARATION, DECLARATION -> °STATEMENT DECLARATION, DECLARATION -> °,
@@ -60,38 +60,38 @@ Ir_a(I0, STATEMENT) = {DECLARATION -> STATEMENT °DECLARATION, DECLARATION -> °
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I5        ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I5        ☑       ☑
 
-Ir_a(I0, fun) = {FUN_DECL -> fun °FUNCTION, FUNCTION -> °id(PARAMETERS_OPC) BLOCK} = I6     ☑
+Ir_a(I0, fun) = {FUN_DECL -> fun °FUNCTION, FUNCTION -> °id(PARAMETERS_OPC) BLOCK} = I6     ☑       ☑
 
-Ir_a(I0, var) = {VAR_DECL -> var °id VAR_INIT;} = I7        ☑
+Ir_a(I0, var) = {VAR_DECL -> var °id VAR_INIT;} = I7        ☑       ☑
 
-Ir_a(I0, EXPR_STMT) = {STATEMENT -> EXPR_STMT °} = I8       ☑
+Ir_a(I0, EXPR_STMT) = {STATEMENT -> EXPR_STMT °} = I8       ☑       ☑
 
-Ir_a(I0, FOR_STMT) = {STATEMENT -> FOR_STMT °} = I9     ☑
+Ir_a(I0, FOR_STMT) = {STATEMENT -> FOR_STMT °} = I9     ☑       ☑
 
-Ir_a(I0, IF_STMT) = {STATEMENT -> IF_STMT °} = I10      ☑
+Ir_a(I0, IF_STMT) = {STATEMENT -> IF_STMT °} = I10      ☑       ☑
 
-Ir_a(I0, PRINT_STMT) = {STATEMENT -> PRINT_STMT °} = I11        ☑
+Ir_a(I0, PRINT_STMT) = {STATEMENT -> PRINT_STMT °} = I11        ☑       ☑
 
-Ir_a(I0, RETURN_STMT) = {STATEMENT -> RETURN_STMT °} = I12      ☑
+Ir_a(I0, RETURN_STMT) = {STATEMENT -> RETURN_STMT °} = I12      ☑       ☑
 
-Ir_a(I0, WHILE_STMT) = {STATEMENT -> WHILE_STMT °} = I13        ☑
+Ir_a(I0, WHILE_STMT) = {STATEMENT -> WHILE_STMT °} = I13        ☑       ☑
 
-Ir_a(I0, BLOCK) = {STATEMENT -> BLOCK °} = I14      ☑
+Ir_a(I0, BLOCK) = {STATEMENT -> BLOCK °} = I14      ☑       ☑
 
-Ir_a(I0, EXPRESSION) = {EXPR_STMT -> EXPRESSION°;} = I15        ☑
+Ir_a(I0, EXPRESSION) = {EXPR_STMT -> EXPRESSION°;} = I15        ☑       ☑
 
-Ir_a(I0, for) = {FOR_STMT -> for°(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT} = I16        ☑
+Ir_a(I0, for) = {FOR_STMT -> for°(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT} = I16        ☑       ☑
 
-Ir_a(I0, if) = {IF_STMT -> if°(EXPRESSION) STATEMENT ELSE_STATEMENT} = I17      ☑
+Ir_a(I0, if) = {IF_STMT -> if°(EXPRESSION) STATEMENT ELSE_STATEMENT} = I17      ☑       ☑
 
 Ir_a(I0, print) = {PRINT_STMT -> print °EXPRESSION, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
       LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I18       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I18       ☑       ☑
 
 Ir_a(I0, return) = {RETURN_STMT -> return °RETURN_EXP_OPC;, RETURN_EXP_OPC -> °EXPRESSION,
       RETURN_EXP_OPC -> °, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
@@ -99,9 +99,9 @@ Ir_a(I0, return) = {RETURN_STMT -> return °RETURN_EXP_OPC;, RETURN_EXP_OPC -> �
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I19       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I19       ☑       ☑
 
-Ir_a(I0, while) = {WHILE_STMT -> while °(EXPRESSION) STATEMENT} = I20       ☑
+Ir_a(I0, while) = {WHILE_STMT -> while °(EXPRESSION) STATEMENT} = I20       ☑       ☑
 
 Ir_a(I0, {) = {BLOCK -> {°DECLARATION}, DECLARATION -> °FUN_DECL DECLARATION,
       DECLARATION -> °VAR_DECL DECLARATION, DECLARATION -> °STATEMENT DECLARATION, DECLARATION -> °,
@@ -116,92 +116,92 @@ Ir_a(I0, {) = {BLOCK -> {°DECLARATION}, DECLARATION -> °FUN_DECL DECLARATION,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I21       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I21       ☑       ☑
 
-Ir_a(I0, ASSIGNMENT) = {EXPRESSION -> ASSIGNMENT°} = I22        ☑
+Ir_a(I0, ASSIGNMENT) = {EXPRESSION -> ASSIGNMENT°} = I22        ☑       ☑
 
 Ir_a(I0, LOGIC_OR) = {ASSIGNMENT -> LOGIC_OR °ASSIGNMENT_OPC, ASSIGNMENT_OPC -> °= EXPRESSION,
-      ASSIGNMENT_OPC -> °} = I23        ☑
+      ASSIGNMENT_OPC -> °} = I23        ☑       ☑
 
 Ir_a(I0, LOGIC_AND) = {LOGIC_OR -> LOGIC_AND °LOGIC_OR_2, LOGIC_OR_2 -> °or LOGIC_AND LOGIC_OR_2
-      LOGIC_OR_2 -> °} = I24        ☑
+      LOGIC_OR_2 -> °} = I24        ☑       ☑
 
 Ir_a(I0, EQUALITY) = {LOGIC_AND -> EQUALITY °LOGIC_AND_2, LOGIC_AND_2 -> °and EQUALITY LOGIC_AND_2,
-      LOGIC_AND_2 -> °} = I25       ☑
+      LOGIC_AND_2 -> °} = I25       ☑       ☑
 
 Ir_a(I0, COMPARISON) = {EQUALITY -> COMPARISON °EQUALITY_2, EQUALITY_2 -> °!= COMPARISON EQUALITY_2,
-      EQUALITY_2 -> °== COMPARISON EQUALITY_2, EQUALITY_2 -> °} = I26       ☑
+      EQUALITY_2 -> °== COMPARISON EQUALITY_2, EQUALITY_2 -> °} = I26       ☑       ☑
 
 Ir_a(I0, TERM) = {COMPARISON -> TERM °COMPARISON_2, COMPARISON_2 -> °> TERM COMPARISON_2,
       COMPARISON_2 -> °>= TERM COMPARISON_2, COMPARISON_2 -> °< TERM COMPARISON_2,
-      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I27       ☑
+      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I27       ☑       ☑
 
 Ir_a(I0, FACTOR) = {TERM -> FACTOR °TERM_2, TERM_2 -> °- FACTOR TERM_2, TERM_2 -> °+ FACTOR TERM_2,
-      TERM_2 -> °} = I28        ☑
+      TERM_2 -> °} = I28        ☑       ☑
 
 Ir_a(I0, UNARY) = {FACTOR -> UNARY °FACTOR_2, FACTOR_2 -> °/ UNARY FACTOR_2, FACTOR_2 -> °* UNARY FACTOR_2,
-      FACTOR_2 -> °} = I29      ☑
+      FACTOR_2 -> °} = I29      ☑       ☑
 
 Ir_a(I0, !) = {UNARY -> ! °UNARY, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I30       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I30       ☑       ☑
 
 Ir_a(I0, -) = {UNARY -> - °UNARY, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I31       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I31       ☑       ☑
 
-Ir_a(I0, CALL) = {UNARY -> CALL °} = I32        ☑
+Ir_a(I0, CALL) = {UNARY -> CALL °} = I32        ☑       ☑
 
-Ir_a(I0, PRIMARY) = {CALL -> PRIMARY °CALL_2, CALL_2 -> °(ARGUMENTS_OPC), CALL_2 -> °} = I33        ☑
+Ir_a(I0, PRIMARY) = {CALL -> PRIMARY °CALL_2, CALL_2 -> °(ARGUMENTS_OPC), CALL_2 -> °} = I33        ☑       ☑
 
-Ir_a(I0, true) = {PRIMARY -> true °} = I34      ☑
+Ir_a(I0, true) = {PRIMARY -> true °} = I34      ☑       ☑
 
-Ir_a(I0, false) = {PRIMARY -> false °} = I35        ☑
+Ir_a(I0, false) = {PRIMARY -> false °} = I35        ☑       ☑
 
-Ir_a(I0, null) = {PRIMARY -> null °} = I36      ☑
+Ir_a(I0, null) = {PRIMARY -> null °} = I36      ☑       ☑
 
-Ir_a(I0, number) = {PRIMARY -> number °} = I37      ☑
+Ir_a(I0, number) = {PRIMARY -> number °} = I37      ☑       ☑
 
-Ir_a(I0, string) = {PRIMARY -> string °} = I38      ☑
+Ir_a(I0, string) = {PRIMARY -> string °} = I38      ☑       ☑
 
-Ir_a(I0, id) = {PRIMARY -> id °} = I39      ☑
+Ir_a(I0, id) = {PRIMARY -> id °} = I39      ☑       ☑
 
 Ir_a(I0, '(') = {PRIMARY -> (°EXPRESSION), EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
       LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I40       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I40       ☑       ☑
 
 Ir_a(I3, DECLARATION) = {DECLARATION -> FUN_DECL DECLARATION°} = I41        ☑
 
-Ir_a(I3, FUN_DECL) = {DECLARATION -> FUN_DECL °DECLARATION, ...} = I3       ☑
+Ir_a(I3, FUN_DECL) = {DECLARATION -> FUN_DECL °DECLARATION, ...} = I3       ☑ AP
 Ir_a(I4, FUN_DECL)
 Ir_a(I5, FUN_DECL)
 Ir_a(I21, FUN_DECL)
 
-Ir_a(I3, VAR_DECL) = {DECLARATION -> VAR_DECL °DECLARATION, ...} = I4       ☑
+Ir_a(I3, VAR_DECL) = {DECLARATION -> VAR_DECL °DECLARATION, ...} = I4       ☑ AQ
 Ir_a(I4, VAR_DECL)
 Ir_a(I5, VAR_DECL)
 Ir_a(I21, VAR_DECL)
 
-Ir_a(I3, STATEMENT) = {DECLARATION -> STATEMENT °DECLARATION, ...} = I5     ☑
+Ir_a(I3, STATEMENT) = {DECLARATION -> STATEMENT °DECLARATION, ...} = I5     ☑ AS
 Ir_a(I4, STATEMENT)
 Ir_a(I5, STATEMENT)
 Ir_a(I21, STATEMENT)
 
-Ir_a(I3, fun) = {FUN_DECL -> fun °FUNCTION, ...} = I6       ☑
+Ir_a(I3, fun) = {FUN_DECL -> fun °FUNCTION, ...} = I6       ☑ G
 Ir_a(I4, fun)
 Ir_a(I5, fun)
 Ir_a(I21, fun)
 
-Ir_a(I3, var) = {VAR_DECL -> var °id VAR_INIT;} = I7        ☑
+Ir_a(I3, var) = {VAR_DECL -> var °id VAR_INIT;} = I7        ☑ H
 Ir_a(I4, var)
 Ir_a(I5, var)
 Ir_a(I21, var)
 Ir_a(I48, var)
 
-Ir_a(I3, EXPR_STMT) = {STATEMENT -> EXPR_STMT °} = I8       ☑
+Ir_a(I3, EXPR_STMT) = {STATEMENT -> EXPR_STMT °} = I8       ☑ AT
 Ir_a(I4, EXPR_STMT)
 Ir_a(I5, EXPR_STMT)
 Ir_a(I21, EXPR_STMT)
@@ -210,7 +210,7 @@ Ir_a(I114, EXPR_STMT)
 Ir_a(I145, EXPR_STMT)
 Ir_a(I147, EXPR_STMT)
 
-Ir_a(I3, FOR_STMT) = {STATEMENT -> FOR_STMT °} = I9     ☑
+Ir_a(I3, FOR_STMT) = {STATEMENT -> FOR_STMT °} = I9     ☑ AU
 Ir_a(I4, FOR_STMT)
 Ir_a(I5, FOR_STMT)
 Ir_a(I21, FOR_STMT)
@@ -219,7 +219,7 @@ Ir_a(I114, FOR_STMT)
 Ir_a(I145, FOR_STMT)
 Ir_a(I147, FOR_STMT)
 
-Ir_a(I3, IF_STMT) = {STATEMENT -> IF_STMT °} = I10      ☑
+Ir_a(I3, IF_STMT) = {STATEMENT -> IF_STMT °} = I10      ☑ AY
 Ir_a(I4, IF_STMT)
 Ir_a(I5, IF_STMT)
 Ir_a(I21, IF_STMT)
@@ -228,7 +228,7 @@ Ir_a(I114, IF_STMT)
 Ir_a(I145, IF_STMT)
 Ir_a(I147, IF_STMT)
 
-Ir_a(I3, PRINT_STMT) = {STATEMENT -> PRINT_STMT °} = I11        ☑
+Ir_a(I3, PRINT_STMT) = {STATEMENT -> PRINT_STMT °} = I11        ☑ BA
 Ir_a(I4, PRINT_STMT)
 Ir_a(I5, PRINT_STMT)
 Ir_a(I21, PRINT_STMT)
@@ -237,7 +237,7 @@ Ir_a(I114, PRINT_STMT)
 Ir_a(I145, PRINT_STMT)
 Ir_a(I147, PRINT_STMT)
 
-Ir_a(I3, RETURN_STMT) = {STATEMENT -> RETURN_STMT °} = I12      ☑
+Ir_a(I3, RETURN_STMT) = {STATEMENT -> RETURN_STMT °} = I12      ☑ BB
 Ir_a(I4, RETURN_STMT)
 Ir_a(I5, RETURN_STMT)
 Ir_a(I21, RETURN_STMT)
@@ -246,7 +246,7 @@ Ir_a(I114, RETURN_STMT)
 Ir_a(I145, RETURN_STMT)
 Ir_a(I147, RETURN_STMT)
 
-Ir_a(I3, WHILE_STMT) = {STATEMENT -> WHILE_STMT °} = I13        ☑
+Ir_a(I3, WHILE_STMT) = {STATEMENT -> WHILE_STMT °} = I13        ☑ BD
 Ir_a(I4, WHILE_STMT)
 Ir_a(I5, WHILE_STMT)
 Ir_a(I21, WHILE_STMT)
@@ -255,7 +255,7 @@ Ir_a(I114, WHILE_STMT)
 Ir_a(I145, WHILE_STMT)
 Ir_a(I147, WHILE_STMT)
 
-Ir_a(I3, BLOCK) = {STATEMENT -> BLOCK °} = I14      ☑
+Ir_a(I3, BLOCK) = {STATEMENT -> BLOCK °} = I14      ☑ BE
 Ir_a(I4, BLOCK)
 Ir_a(I5, BLOCK)
 Ir_a(I21, BLOCK)
@@ -264,7 +264,7 @@ Ir_a(I114, BLOCK)
 Ir_a(I145, BLOCK)
 Ir_a(I147, BLOCK)
 
-Ir_a(I3, EXPRESSION) = {EXPR_STMT -> EXPRESSION°;} = I15        ☑
+Ir_a(I3, EXPRESSION) = {EXPR_STMT -> EXPRESSION°;} = I15        ☑ BF
 Ir_a(I4, EXPRESSION)
 Ir_a(I5, EXPRESSION)
 Ir_a(I21, EXPRESSION)
@@ -274,7 +274,7 @@ Ir_a(I114, EXPRESSION)
 Ir_a(I145, EXPRESSION)
 Ir_a(I147, EXPRESSION)
 
-Ir_a(I3, for) = {FOR_STMT -> for°(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT} = I16        ☑
+Ir_a(I3, for) = {FOR_STMT -> for°(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT} = I16        ☑ L
 Ir_a(I4, for)
 Ir_a(I5, for)
 Ir_a(I21, for)
@@ -283,7 +283,7 @@ Ir_a(I114, for)
 Ir_a(I145, for)
 Ir_a(I147, for)
 
-Ir_a(I3, if) = {IF_STMT -> if°(EXPRESSION) STATEMENT ELSE_STATEMENT} = I17      ☑
+Ir_a(I3, if) = {IF_STMT -> if°(EXPRESSION) STATEMENT ELSE_STATEMENT} = I17      ☑ O
 Ir_a(I4, if)
 Ir_a(I5, if)
 Ir_a(I21, if)
@@ -292,7 +292,7 @@ Ir_a(I114, if)
 Ir_a(I145, if)
 Ir_a(I147, if)
 
-Ir_a(I3, print) = {PRINT_STMT -> print °EXPRESSION, ...} = I18      ☑
+Ir_a(I3, print) = {PRINT_STMT -> print °EXPRESSION, ...} = I18      ☑ Q
 Ir_a(I4, print)
 Ir_a(I5, print)
 Ir_a(I21, print)
@@ -301,7 +301,7 @@ Ir_a(I114, print)
 Ir_a(I145, print)
 Ir_a(I147, print)
 
-Ir_a(I3, return) = {RETURN_STMT -> return °RETURN_EXP_OPC;, ...} = I19      ☑
+Ir_a(I3, return) = {RETURN_STMT -> return °RETURN_EXP_OPC;, ...} = I19      ☑ R
 Ir_a(I4, return)
 Ir_a(I5, return)
 Ir_a(I21, return)
@@ -310,7 +310,7 @@ Ir_a(I114, return)
 Ir_a(I145, return)
 Ir_a(I147, return)
 
-Ir_a(I3, while) = {WHILE_STMT -> while °(EXPRESSION) STATEMENT} = I20       ☑
+Ir_a(I3, while) = {WHILE_STMT -> while °(EXPRESSION) STATEMENT} = I20       ☑ S
 Ir_a(I4, while)
 Ir_a(I5, while)
 Ir_a(I21, while)
@@ -319,7 +319,7 @@ Ir_a(I114, while)
 Ir_a(I145, while)
 Ir_a(I147, while)
 
-Ir_a(I3, {) = {BLOCK -> {°DECLARATION}, ...} = I21      ☑
+Ir_a(I3, {) = {BLOCK -> {°DECLARATION}, ...} = I21      ☑ T
 Ir_a(I4, {)
 Ir_a(I5, {)
 Ir_a(I21, {)
@@ -328,7 +328,7 @@ Ir_a(I114, {)
 Ir_a(I145, {)
 Ir_a(I147, {)
 
-Ir_a(I3, ASSIGNMENT) = {EXPRESSION -> ASSIGNMENT°} = I22        ☑
+Ir_a(I3, ASSIGNMENT) = {EXPRESSION -> ASSIGNMENT°} = I22        ☑ BG
 Ir_a(I4, ASSIGNMENT)        Ir_a(I76, ASSIGNMENT)
 Ir_a(I5, ASSIGNMENT)        Ir_a(I80, ASSIGNMENT)
 Ir_a(I18, ASSIGNMENT)       Ir_a(I81, ASSIGNMENT)
@@ -340,7 +340,7 @@ Ir_a(I49, ASSIGNMENT)       Ir_a(I145, ASSIGNMENT)
 Ir_a(I53, ASSIGNMENT)       Ir_a(I147, ASSIGNMENT)
 Ir_a(I56, ASSIGNMENT)
 
-Ir_a(I3, LOGIC_OR) = {ASSIGNMENT -> LOGIC_OR °ASSIGNMENT_OPC, ...} = I23        ☑
+Ir_a(I3, LOGIC_OR) = {ASSIGNMENT -> LOGIC_OR °ASSIGNMENT_OPC, ...} = I23        ☑ BI
 Ir_a(I4, LOGIC_OR)          Ir_a(I76, LOGIC_OR)
 Ir_a(I5, LOGIC_OR)          Ir_a(I80, LOGIC_OR)
 Ir_a(I18, LOGIC_OR)         Ir_a(I81, LOGIC_OR)
@@ -352,7 +352,7 @@ Ir_a(I49, LOGIC_OR)         Ir_a(I145, LOGIC_OR)
 Ir_a(I53, LOGIC_OR)         Ir_a(I147, LOGIC_OR)
 Ir_a(I56, LOGIC_OR)
 
-Ir_a(I3, LOGIC_AND) = {LOGIC_OR -> LOGIC_AND °LOGIC_OR_2, ...} = I24        ☑
+Ir_a(I3, LOGIC_AND) = {LOGIC_OR -> LOGIC_AND °LOGIC_OR_2, ...} = I24        ☑ BK
 Ir_a(I4, LOGIC_AND)         Ir_a(I76, LOGIC_AND)
 Ir_a(I5, LOGIC_AND)         Ir_a(I80, LOGIC_AND)
 Ir_a(I18, LOGIC_AND)        Ir_a(I81, LOGIC_AND)
@@ -364,7 +364,7 @@ Ir_a(I49, LOGIC_AND)        Ir_a(I145, LOGIC_AND)
 Ir_a(I53, LOGIC_AND)        Ir_a(I147, LOGIC_AND)
 Ir_a(I56, LOGIC_AND)
 
-Ir_a(I3, EQUALITY) = {LOGIC_AND -> EQUALITY °LOGIC_AND_2, ...} = I25        ☑
+Ir_a(I3, EQUALITY) = {LOGIC_AND -> EQUALITY °LOGIC_AND_2, ...} = I25        ☑ BM
 Ir_a(I4, EQUALITY)          Ir_a(I76, EQUALITY)
 Ir_a(I5, EQUALITY)          Ir_a(I80, EQUALITY)
 Ir_a(I18, EQUALITY)         Ir_a(I81, EQUALITY)
@@ -377,7 +377,7 @@ Ir_a(I53, EQUALITY)         Ir_a(I147, EQUALITY)
 Ir_a(I56, EQUALITY)
 Ir_a(I58, EQUALITY)
 
-Ir_a(I3, COMPARISON) = {EQUALITY -> COMPARISON °EQUALITY_2, ...} = I26      ☑
+Ir_a(I3, COMPARISON) = {EQUALITY -> COMPARISON °EQUALITY_2, ...} = I26      ☑ BO
 Ir_a(I4, COMPARISON)        Ir_a(I76, COMPARISON)
 Ir_a(I5, COMPARISON)        Ir_a(I80, COMPARISON)
 Ir_a(I18, COMPARISON)       Ir_a(I81, COMPARISON)
@@ -391,7 +391,7 @@ Ir_a(I56, COMPARISON)
 Ir_a(I58, COMPARISON)
 Ir_a(I60, COMPARISON)
 
-Ir_a(I3, TERM) = {COMPARISON -> TERM °COMPARISON_2, ...} = I27      ☑
+Ir_a(I3, TERM) = {COMPARISON -> TERM °COMPARISON_2, ...} = I27      ☑ BQ
 Ir_a(I4, TERM)              Ir_a(I76, TERM)
 Ir_a(I5, TERM)              Ir_a(I80, TERM)
 Ir_a(I18, TERM)             Ir_a(I81, TERM)
@@ -405,7 +405,7 @@ Ir_a(I56, TERM)             Ir_a(I145, TERM)
 Ir_a(I58, TERM)             Ir_a(I147, TERM)
 Ir_a(I60, TERM)
 
-Ir_a(I3, FACTOR) = {TERM -> FACTOR °TERM_2, ...} = I28      ☑
+Ir_a(I3, FACTOR) = {TERM -> FACTOR °TERM_2, ...} = I28      ☑ BS
 Ir_a(I4, FACTOR)            Ir_a(I76, FACTOR)
 Ir_a(I5, FACTOR)            Ir_a(I80, FACTOR)
 Ir_a(I18, FACTOR)           Ir_a(I81, FACTOR)
@@ -420,7 +420,7 @@ Ir_a(I58, FACTOR)           Ir_a(I129, FACTOR)
 Ir_a(I60, FACTOR)           Ir_a(I145, FACTOR)
 Ir_a(I65, FACTOR)           Ir_a(I147, FACTOR)
 
-Ir_a(I3, UNARY) = {FACTOR -> UNARY °FACTOR_2, ...} = I29        ☑
+Ir_a(I3, UNARY) = {FACTOR -> UNARY °FACTOR_2, ...} = I29        ☑ BU
 Ir_a(I4, UNARY)             Ir_a(I76, UNARY)
 Ir_a(I5, UNARY)             Ir_a(I80, UNARY)
 Ir_a(I18, UNARY)            Ir_a(I81, UNARY)
@@ -437,7 +437,7 @@ Ir_a(I65, UNARY)            Ir_a(I147, UNARY)
 Ir_a(I68, UNARY)
 Ir_a(I69, UNARY)
 
-Ir_a(I3, !) = {UNARY -> ! °UNARY, ...} = I30        ☑
+Ir_a(I3, !) = {UNARY -> ! °UNARY, ...} = I30        ☑ X
 Ir_a(I4, !)                 Ir_a(I76, !)
 Ir_a(I5, !)                 Ir_a(I80, !)
 Ir_a(I18, !)                Ir_a(I81, !)
@@ -458,7 +458,7 @@ Ir_a(I69, !)
 Ir_a(I71, !)
 Ir_a(I72, !)
 
-Ir_a(I3, -) = {UNARY -> - °UNARY, ...} = I31        ☑
+Ir_a(I3, -) = {UNARY -> - °UNARY, ...} = I31        ☑ AA
 Ir_a(I4, -)                 Ir_a(I76, -)
 Ir_a(I5, -)                 Ir_a(I80, -)
 Ir_a(I18, -)                Ir_a(I81, -)
@@ -479,7 +479,7 @@ Ir_a(I69, -)
 Ir_a(I71, -)
 Ir_a(I72, -)
 
-Ir_a(I3, CALL) = {UNARY -> CALL °} = I32        ☑
+Ir_a(I3, CALL) = {UNARY -> CALL °} = I32        ☑ BV
 Ir_a(I4, CALL)              Ir_a(I76, CALL)
 Ir_a(I5, CALL)              Ir_a(I80, CALL)
 Ir_a(I18, CALL)             Ir_a(I81, CALL)
@@ -500,7 +500,7 @@ Ir_a(I69, CALL)
 Ir_a(I71, CALL)
 Ir_a(I72, CALL)
 
-Ir_a(I3, PRIMARY) = {CALL -> PRIMARY °CALL_2, ...} = I33        ☑
+Ir_a(I3, PRIMARY) = {CALL -> PRIMARY °CALL_2, ...} = I33        ☑ BX
 Ir_a(I4, PRIMARY)           Ir_a(I76, PRIMARY)
 Ir_a(I5, PRIMARY)           Ir_a(I80, PRIMARY)
 Ir_a(I18, PRIMARY)          Ir_a(I81, PRIMARY)
@@ -521,7 +521,7 @@ Ir_a(I69, PRIMARY)
 Ir_a(I71, PRIMARY)
 Ir_a(I72, PRIMARY)
 
-Ir_a(I3, true) = {PRIMARY -> true °} = I34      ☑
+Ir_a(I3, true) = {PRIMARY -> true °} = I34      ☑ AE
 Ir_a(I4, true)              Ir_a(I76, true)
 Ir_a(I5, true)              Ir_a(I80, true)
 Ir_a(I18, true)             Ir_a(I81, true)
@@ -542,7 +542,7 @@ Ir_a(I69, true)
 Ir_a(I71, true)
 Ir_a(I72, true)
 
-Ir_a(I3, false) = {PRIMARY -> false °} = I35        ☑
+Ir_a(I3, false) = {PRIMARY -> false °} = I35        ☑ AF
 Ir_a(I4, false)             Ir_a(I76, false)
 Ir_a(I5, false)             Ir_a(I80, false)
 Ir_a(I18, false)            Ir_a(I81, false)
@@ -563,7 +563,7 @@ Ir_a(I69, false)
 Ir_a(I71, false)
 Ir_a(I72, false)
 
-Ir_a(I3, null) = {PRIMARY -> null °} = I36      ☑
+Ir_a(I3, null) = {PRIMARY -> null °} = I36      ☑ AG
 Ir_a(I4, null)              Ir_a(I76, null)
 Ir_a(I5, null)              Ir_a(I80, null)
 Ir_a(I18, null)             Ir_a(I81, null)
@@ -584,7 +584,7 @@ Ir_a(I69, null)
 Ir_a(I71, null)
 Ir_a(I71, null)
 
-Ir_a(I3, number) = {PRIMARY -> number °} = I37      ☑
+Ir_a(I3, number) = {PRIMARY -> number °} = I37      ☑ AH
 Ir_a(I4, number)            Ir_a(I76, number)
 Ir_a(I5, number)            Ir_a(I80, number)
 Ir_a(I18, number)           Ir_a(I81, number)
@@ -605,7 +605,7 @@ Ir_a(I69, number)
 Ir_a(I71, number)
 Ir_a(I72, number)
 
-Ir_a(I3, string) = {PRIMARY -> string °} = I38      ☑
+Ir_a(I3, string) = {PRIMARY -> string °} = I38      ☑ AI
 Ir_a(I4, string)            Ir_a(I76, string)
 Ir_a(I5, string)            Ir_a(I80, string)
 Ir_a(I18, string)           Ir_a(I81, string)
@@ -626,7 +626,7 @@ Ir_a(I69, string)
 Ir_a(I71, string)
 Ir_a(I72, string)
 
-Ir_a(I3, id) = {PRIMARY -> id °} = I39      ☑
+Ir_a(I3, id) = {PRIMARY -> id °} = I39      ☑ AJ
 Ir_a(I4, id)                Ir_a(I76, id)
 Ir_a(I5, id)                Ir_a(I80, id)
 Ir_a(I18, id)               Ir_a(I81, id)
@@ -647,7 +647,7 @@ Ir_a(I69, id)
 Ir_a(I71, id)
 Ir_a(I72, id)
 
-Ir_a(I3, '(') = {PRIMARY -> (°EXPRESSION), ...} = I40       ☑
+Ir_a(I3, '(') = {PRIMARY -> (°EXPRESSION), ...} = I40       ☑ M
 Ir_a(I4, '(')               Ir_a(I76, '(')
 Ir_a(I5, '(')               Ir_a(I80, '(')
 Ir_a(I18, '(')              Ir_a(I81, '(')
@@ -668,17 +668,17 @@ Ir_a(I69, '(')
 Ir_a(I71, '(')
 Ir_a(I72, '(')
 
-Ir_a(I4, DECLARATION) = {DECLARATION -> VAR_DECL DECLARATION°} = I42        ☑
+Ir_a(I4, DECLARATION) = {DECLARATION -> VAR_DECL DECLARATION°} = I42        ☑       ☑
 
-Ir_a(I5, DECLARATION) = {DECLARATION -> STATEMENT DECLARATION°} = I43       ☑
+Ir_a(I5, DECLARATION) = {DECLARATION -> STATEMENT DECLARATION°} = I43       ☑       ☑
 
-Ir_a(I6, FUNCTION) = {FUN_DECL -> fun FUNCTION°} = I44      ☑
+Ir_a(I6, FUNCTION) = {FUN_DECL -> fun FUNCTION°} = I44      ☑       ☑
 
-Ir_a(I6, id) = {FUNCTION -> id°(PARAMETERS_OPC) BLOCK} = I45        ☑
+Ir_a(I6, id) = {FUNCTION -> id°(PARAMETERS_OPC) BLOCK} = I45        ☑       ☑
 
-Ir_a(I7, id) = {VAR_DECL -> var id °VAR_INIT;, VAR_INIT -> °= EXPRESSION, VAR_INIT -> °} = I46      ☑
+Ir_a(I7, id) = {VAR_DECL -> var id °VAR_INIT;, VAR_INIT -> °= EXPRESSION, VAR_INIT -> °} = I46      ☑       ☑
 
-Ir_a(I15, ;) = {EXPR_STMT -> EXPRESSION;°} = I47        ☑
+Ir_a(I15, ;) = {EXPR_STMT -> EXPRESSION;°} = I47        ☑       ☑
 
 Ir_a(I16, '(') = {FOR_STMT -> for(°FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT, FOR_STMT_1 -> °VAR_DECL,
       FOR_STMT_1 -> °EXPR_STMT, FOR_STMT_1 -> °;, VAR_DECL -> °var id VAR_INIT, EXPR_STMT -> °EXPRESSION;,
@@ -687,97 +687,97 @@ Ir_a(I16, '(') = {FOR_STMT -> for(°FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I48       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I48       ☑       ☑
 
 Ir_a(I17, '(') = {IF_STMT -> if(°EXPRESSION) STATEMENT ELSE_STATEMENT, EXPRESSION -> °ASSIGNMENT,
       ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC, LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I49       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I49       ☑       ☑
 
-Ir_a(I18, EXPRESSION) = {PRINT_STMT -> print EXPRESSION°} = I50     ☑
+Ir_a(I18, EXPRESSION) = {PRINT_STMT -> print EXPRESSION°} = I50     ☑       ☑
 
-Ir_a(I19, RETURN_EXP_OPC) = {RETURN_STMT -> return RETURN_EXP_OPC°;} = I51      ☑
+Ir_a(I19, RETURN_EXP_OPC) = {RETURN_STMT -> return RETURN_EXP_OPC°;} = I51      ☑       ☑
 
-Ir_a(I19, EXPRESSION) = {RETURN_EXP_OPC -> EXPRESSION°} = I52       ☑
+Ir_a(I19, EXPRESSION) = {RETURN_EXP_OPC -> EXPRESSION°} = I52       ☑       ☑
 
 Ir_a(I20, '(') = {WHILE_STMT -> while (°EXPRESSION) STATEMENT, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
       LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I53       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I53       ☑       ☑
 
-Ir_a(I21, DECLARATION) = {BLOCK -> {DECLARATION°}} = I54        ☑
+Ir_a(I21, DECLARATION) = {BLOCK -> {DECLARATION°}} = I54        ☑       ☑
 
-Ir_a(I23, ASSIGNMENT_OPC) = {ASSIGNMENT -> LOGIC_OR ASSIGNMENT_OPC°} = I55      ☑
+Ir_a(I23, ASSIGNMENT_OPC) = {ASSIGNMENT -> LOGIC_OR ASSIGNMENT_OPC°} = I55      ☑       ☑
 
 Ir_a(I23, =) = {ASSIGNMENT_OPC -> = °EXPRESSION, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
       LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I56       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I56       ☑       ☑
 
-Ir_a(I24, LOGIC_OR_2) = {LOGIC_OR -> LOGIC_AND LOGIC_OR_2°} = I57       ☑
+Ir_a(I24, LOGIC_OR_2) = {LOGIC_OR -> LOGIC_AND LOGIC_OR_2°} = I57       ☑       ☑
 
 Ir_a(I24, or) = {LOGIC_OR_2 -> or °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I58       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I58       ☑       ☑
 
-Ir_a(I25, LOGIC_AND_2) = {LOGIC_AND -> EQUALITY LOGIC_AND_2°} = I59     ☑
+Ir_a(I25, LOGIC_AND_2) = {LOGIC_AND -> EQUALITY LOGIC_AND_2°} = I59     ☑       ☑
 
 Ir_a(I25, and) = {LOGIC_AND_2 -> and °EQUALITY LOGIC_AND_2, EQUALITY -> °COMPARISON EQUALITY_2,
       COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2, FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY,
       UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null,
-      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I60       ☑
+      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I60       ☑       ☑
 
-Ir_a(I26, EQUALITY_2) = {EQUALITY -> COMPARISON EQUALITY_2°} = I61      ☑
+Ir_a(I26, EQUALITY_2) = {EQUALITY -> COMPARISON EQUALITY_2°} = I61      ☑       ☑
 
-Ir_a(I26, !) = {EQUALITY_2 -> !°= COMPARISON EQUALITY_2} = I62      ☑
+Ir_a(I26, !) = {EQUALITY_2 -> !°= COMPARISON EQUALITY_2} = I62      ☑       ☑
 
-Ir_a(I26, =) = {EQUALITY_2 -> =°= COMPARISON EQUALITY_2} = I63      ☑
+Ir_a(I26, =) = {EQUALITY_2 -> =°= COMPARISON EQUALITY_2} = I63      ☑       ☑
 
-Ir_a(I27, COMPARISON_2) = {COMPARISON -> TERM COMPARISON_2°} = I64      ☑
+Ir_a(I27, COMPARISON_2) = {COMPARISON -> TERM COMPARISON_2°} = I64      ☑       ☑
 
 Ir_a(I27, >) = {COMPARISON_2 -> >°= TERM COMPARISON_2, COMPARISON_2 -> > °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2,
       PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number, PRIMARY -> °string,
-      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I65       ☑
+      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I65       ☑       ☑
 
 Ir_a(I27, <) = {COMPARISON_2 -> <°= TERM COMPARISON_2, COMPARISON_2 -> < °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2,
       PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number, PRIMARY -> °string,
-      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I66       ☑
+      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I66       ☑       ☑
 
-Ir_a(I28, TERM_2) = {TERM -> FACTOR TERM_2°} = I67      ☑
+Ir_a(I28, TERM_2) = {TERM -> FACTOR TERM_2°} = I67      ☑       ☑
 
 Ir_a(I28, -) = {TERM_2 -> - °FACTOR TERM_2, FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY,
       UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null,
-      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I68       ☑
+      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I68       ☑       ☑
 
 Ir_a(I28, +) = {TERM_2 -> + °FACTOR TERM_2, FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY,
       UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null,
-      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I69       ☑
+      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I69       ☑       ☑
 
-Ir_a(I29, FACTOR_2) = {FACTOR -> UNARY FACTOR_2°} = I70     ☑
+Ir_a(I29, FACTOR_2) = {FACTOR -> UNARY FACTOR_2°} = I70     ☑       ☑
 
 Ir_a(I29, /) = {FACTOR_2 -> / °UNARY FACTOR_2, UNARY -> °!UNARY,
       UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null,
-      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I71       ☑
+      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I71       ☑       ☑
 
 Ir_a(I29, *) = {FACTOR_2 -> * °UNARY FACTOR_2, UNARY -> °!UNARY,
       UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null,
-      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I72       ☑
+      PRIMARY -> °number, PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I72       ☑       ☑
 
-Ir_a(I30, UNARY) = {UNARY -> ! UNARY°} = I73        ☑
+Ir_a(I30, UNARY) = {UNARY -> ! UNARY°} = I73        ☑       ☑
 
-Ir_a(I31, UNARY) = {UNARY -> - UNARY°} = I74        ☑
+Ir_a(I31, UNARY) = {UNARY -> - UNARY°} = I74        ☑       ☑
 
-Ir_a(I33, CALL_2) = {CALL -> PRIMARY CALL_2°} = I75     ☑
+Ir_a(I33, CALL_2) = {CALL -> PRIMARY CALL_2°} = I75     ☑       ☑
 
 Ir_a(I33, '(') = {CALL_2 -> (°ARGUMENTS_OPC), ARGUMENTS_OPC -> °EXPRESSION ARGUMENTS, ARGUMENTS_OPC -> °,
       EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
@@ -785,21 +785,21 @@ Ir_a(I33, '(') = {CALL_2 -> (°ARGUMENTS_OPC), ARGUMENTS_OPC -> °EXPRESSION ARG
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I76       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I76       ☑       ☑
 
-Ir_a(I40, EXPRESSION) = {PRIMARY -> (EXPRESSION°)} = I77        ☑
+Ir_a(I40, EXPRESSION) = {PRIMARY -> (EXPRESSION°)} = I77        ☑       ☑
 
 Ir_a(I45, '(') = {FUNCTION -> id(°PARAMETERS_OPC) BLOCK, PARAMETERS_OPC -> °PARAMETERS, PARAMETERS_OPC -> °,
-      PARAMETERS -> °id PARAMETERS_2} = I78     ☑
+      PARAMETERS -> °id PARAMETERS_2} = I78     ☑       ☑
 
-Ir_a(I46, VAR_INIT) = {VAR_DECL -> var id VAR_INIT°;} = I79     ☑
+Ir_a(I46, VAR_INIT) = {VAR_DECL -> var id VAR_INIT°;} = I79     ☑       ☑
 
 Ir_a(I46, =) = {VAR_INIT -> = °EXPRESSION, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
       LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I80       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I80       ☑       ☑
 
 Ir_a(I48, FOR_STMT_1) = {FOR_STMT -> for(FOR_STMT_1 °FOR_STMT_2 FOR_STMT_3) STATEMENT, FOR_STMT_2 -> °EXPRESSION;,
       FOR_STMT_2 -> °;, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
@@ -807,85 +807,85 @@ Ir_a(I48, FOR_STMT_1) = {FOR_STMT -> for(FOR_STMT_1 °FOR_STMT_2 FOR_STMT_3) STA
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I81       ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I81       ☑       ☑
 
-Ir_a(I48, VAR_DECL) = {FOR_STMT_1 -> VAR_DECL°} = I82       ☑
+Ir_a(I48, VAR_DECL) = {FOR_STMT_1 -> VAR_DECL°} = I82       ☑       ☑
 
-Ir_a(I48, EXPR_STMT) = {FOR_STMT_1 -> EXPR_STMT°} = I83     ☑
+Ir_a(I48, EXPR_STMT) = {FOR_STMT_1 -> EXPR_STMT°} = I83     ☑       ☑
 
-Ir_a(I48, ;) = {FOR_STMT_1 -> ;°} = I84     ☑
+Ir_a(I48, ;) = {FOR_STMT_1 -> ;°} = I84     ☑       ☑
 
-Ir_a(I49, EXPRESSION) = {IF_STMT -> if(EXPRESSION°) STATEMENT ELSE_STATEMENT} = I85     ☑
+Ir_a(I49, EXPRESSION) = {IF_STMT -> if(EXPRESSION°) STATEMENT ELSE_STATEMENT} = I85     ☑       ☑
 
-Ir_a(I51, ;) = {RETURN_STMT -> return RETURN_EXP_OPC;°} = I86       ☑
+Ir_a(I51, ;) = {RETURN_STMT -> return RETURN_EXP_OPC;°} = I86       ☑       ☑
 
-Ir_a(I53, EXPRESSION) = {WHILE_STMT -> while (EXPRESSION°) STATEMENT} = I87     ☑
+Ir_a(I53, EXPRESSION) = {WHILE_STMT -> while (EXPRESSION°) STATEMENT} = I87     ☑       ☑
 
-Ir_a(I54, }) = {BLOCK -> {DECLARATION}°} = I88      ☑
+Ir_a(I54, }) = {BLOCK -> {DECLARATION}°} = I88      ☑       ☑
 
-Ir_a(I56, EXPRESSION) = {ASSIGNMENT_OPC -> = EXPRESSION°} = I89     ☑
+Ir_a(I56, EXPRESSION) = {ASSIGNMENT_OPC -> = EXPRESSION°} = I89     ☑       ☑
 
 Ir_a(I58, LOGIC_AND) = {LOGIC_OR_2 -> or LOGIC_AND °LOGIC_OR_2, LOGIC_OR_2 -> °or LOGIC_AND LOGIC_OR_2,
-      LOGIC_OR_2 -> °} = I90        ☑
+      LOGIC_OR_2 -> °} = I90        ☑       ☑
 
 Ir_a(I60, EQUALITY) = {LOGIC_AND_2 -> and EQUALITY °LOGIC_AND_2, LOGIC_AND_2 -> °and EQUALITY LOGIC_AND_2,
-      LOGIC_AND_2 -> °} = I91       ☑
+      LOGIC_AND_2 -> °} = I91       ☑       ☑
 
 Ir_a(I62, =) = {EQUALITY_2 -> != °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2,
       PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number, PRIMARY -> °string,
-      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I92       ☑
+      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I92       ☑       ☑
 
 Ir_a(I63, =) = {EQUALITY_2 -> == °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2,
       PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number, PRIMARY -> °string,
-      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I93       ☑
+      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I93       ☑       ☑
 
 Ir_a(I65, =) = {COMPARISON_2 -> >= °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2,
       PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number, PRIMARY -> °string,
-      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I94       ☑
+      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I94       ☑       ☑
 
 Ir_a(I65, TERM) = {COMPARISON_2 -> > TERM °COMPARISON_2, COMPARISON_2 -> °> TERM COMPARISON_2,
       COMPARISON_2 -> °>= TERM COMPARISON_2, COMPARISON_2 -> °< TERM COMPARISON_2,
-      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I95       ☑
+      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I95       ☑       ☑
 
 Ir_a(I66, =) = {COMPARISON_2 -> <= °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL, CALL -> °PRIMARY CALL_2,
       PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number, PRIMARY -> °string,
-      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I96       ☑
+      PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I96       ☑       ☑
 
 Ir_a(I66, TERM) = {COMPARISON_2 -> < TERM °COMPARISON_2, COMPARISON_2 -> °> TERM COMPARISON_2,
       COMPARISON_2 -> °>= TERM COMPARISON_2, COMPARISON_2 -> °< TERM COMPARISON_2,
-      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I97       ☑
+      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I97       ☑       ☑
 
 Ir_a(I68, FACTOR) = {TERM_2 -> - FACTOR °TERM_2, TERM_2 -> °- FACTOR TERM_2, TERM_2 -> °+ FACTOR TERM_2,
-      TERM_2 -> °} = I98        ☑
+      TERM_2 -> °} = I98        ☑       ☑
 
 Ir_a(I69, FACTOR) = {TERM_2 -> + FACTOR °TERM_2, TERM_2 -> °- FACTOR TERM_2, TERM_2 -> °+ FACTOR TERM_2,
-      TERM_2 -> °} = I99        ☑
+      TERM_2 -> °} = I99        ☑       ☑
 
 Ir_a(I71, UNARY) = {FACTOR_2 -> / UNARY °FACTOR_2, FACTOR_2 -> °/ UNARY FACTOR_2, FACTOR_2 -> °* UNARY FACTOR_2,
-      FACTOR_2 -> °} = I100     ☑
+      FACTOR_2 -> °} = I100     ☑       ☑
 
 Ir_a(I72, UNARY) = {FACTOR_2 -> * UNARY °FACTOR_2, FACTOR_2 -> °/ UNARY FACTOR_2, FACTOR_2 -> °* UNARY FACTOR_2,
-      FACTOR_2 -> °} = I101     ☑
+      FACTOR_2 -> °} = I101     ☑       ☑
 
-Ir_a(I76, ARGUMENTS_OPC) = {CALL_2 -> (ARGUMENTS_OPC°)} = I102      ☑
+Ir_a(I76, ARGUMENTS_OPC) = {CALL_2 -> (ARGUMENTS_OPC°)} = I102      ☑       ☑
 
-Ir_a(I76, EXPRESSION) = {ARGUMENTS_OPC -> EXPRESSION °ARGUMENTS, ARGUMENTS -> °, EXPRESSION ARGUMENTS, ARGUMENTS -> °} = I103       ☑
+Ir_a(I76, EXPRESSION) = {ARGUMENTS_OPC -> EXPRESSION °ARGUMENTS, ARGUMENTS -> °, EXPRESSION ARGUMENTS, ARGUMENTS -> °} = I103       ☑       ☑
 
-Ir_a(I77, ')') = {PRIMARY -> (EXPRESSION)°} = I104      ☑
+Ir_a(I77, ')') = {PRIMARY -> (EXPRESSION)°} = I104      ☑       ☑
 
-Ir_a(I78, PARAMETERS_OPC) = {FUNCTION -> id(PARAMETERS_OPC°) BLOCK} = I105      ☑
+Ir_a(I78, PARAMETERS_OPC) = {FUNCTION -> id(PARAMETERS_OPC°) BLOCK} = I105      ☑       ☑
 
-Ir_a(I78, PARAMETERS) = {PARAMETERS_OPC -> PARAMETERS°} = I106      ☑
+Ir_a(I78, PARAMETERS) = {PARAMETERS_OPC -> PARAMETERS°} = I106      ☑       ☑
 
-Ir_a(I78, id) = {PARAMETERS -> id °PARAMETERS_2, PARAMETERS_2 -> °, id PARAMETERS_2, PARAMETERS_2 -> °} = I107      ☑
+Ir_a(I78, id) = {PARAMETERS -> id °PARAMETERS_2, PARAMETERS_2 -> °, id PARAMETERS_2, PARAMETERS_2 -> °} = I107      ☑       ☑
 
-Ir_a(I79, ;) = {VAR_DECL -> var id VAR_INIT;°} = I108       ☑
+Ir_a(I79, ;) = {VAR_DECL -> var id VAR_INIT;°} = I108       ☑       ☑
 
-Ir_a(I80, EXPRESSION) = {VAR_INIT -> = EXPRESSION°} = I109      ☑
+Ir_a(I80, EXPRESSION) = {VAR_INIT -> = EXPRESSION°} = I109      ☑       ☑
 
 Ir_a(I81, FOR_STMT_2) = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 °FOR_STMT_3) STATEMENT, FOR_STMT_3 -> °EXPRESSION,
       FOR_STMT_3 -> °, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
@@ -893,11 +893,11 @@ Ir_a(I81, FOR_STMT_2) = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 °FOR_STMT_3) STA
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I110      ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I110      ☑       ☑
 
-Ir_a(I81, EXPRESSION) = {FOR_STMT_2 -> EXPRESSION°;} = I111     ☑
+Ir_a(I81, EXPRESSION) = {FOR_STMT_2 -> EXPRESSION°;} = I111     ☑       ☑
 
-Ir_a(I81, ;) = {FOR_STMT_2 -> ;°} = I112        ☑
+Ir_a(I81, ;) = {FOR_STMT_2 -> ;°} = I112        ☑       ☑
 
 Ir_a(I85, ')') = {IF_STMT -> if(EXPRESSION) °STATEMENT ELSE_STATEMENT, STATEMENT -> °EXPR_STMT,
       STATEMENT -> °FOR_STMT, STATEMENT -> °IF_STMT, STATEMENT -> °PRINT_STMT, STATEMENT -> °RETURN_STMT,
@@ -910,7 +910,7 @@ Ir_a(I85, ')') = {IF_STMT -> if(EXPRESSION) °STATEMENT ELSE_STATEMENT, STATEMEN
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I113      ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I113      ☑       ☑
 
 Ir_a(I87, ')') = {WHILE_STMT -> while(EXPRESSION) °STATEMENT, STATEMENT -> °EXPR_STMT,
       STATEMENT -> °FOR_STMT, STATEMENT -> °IF_STMT, STATEMENT -> °PRINT_STMT, STATEMENT -> °RETURN_STMT,
@@ -923,125 +923,125 @@ Ir_a(I87, ')') = {WHILE_STMT -> while(EXPRESSION) °STATEMENT, STATEMENT -> °EX
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I114      ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I114      ☑       ☑
 
-Ir_a(I90, LOGIC_OR_2) = {LOGIC_OR_2 -> or LOGIC_AND LOGIC_OR_2°} = I115     ☑
+Ir_a(I90, LOGIC_OR_2) = {LOGIC_OR_2 -> or LOGIC_AND LOGIC_OR_2°} = I115     ☑       ☑
 
-Ir_a(I90, or) = {LOGIC_OR_2 -> or °LOGIC_AND LOGIC_OR_2, ...} = I58     ☑
+Ir_a(I90, or) = {LOGIC_OR_2 -> or °LOGIC_AND LOGIC_OR_2, ...} = I58     ☑       ☑
 
 Ir_a(I91, LOGIC_AND_2) = {LOGIC_AND_2 -> and EQUALITY LOGIC_AND_2°} = I116      ☑
 
-Ir_a(I91, and) = {LOGIC_AND_2 -> and °EQUALITY LOGIC_AND_2, ...} = I60      ☑
+Ir_a(I91, and) = {LOGIC_AND_2 -> and °EQUALITY LOGIC_AND_2, ...} = I60      ☑       ☑
 
 Ir_a(I92, COMPARISON) = {EQUALITY_2 -> != COMPARISON °EQUALITY_2, EQUALITY_2 -> °!= COMPARISON EQUALITY_2,
-      EQUALITY_2 -> °== COMPARISON EQUALITY_2, EQUALITY_2 -> °} = I117      ☑
+      EQUALITY_2 -> °== COMPARISON EQUALITY_2, EQUALITY_2 -> °} = I117      ☑       ☑
 
 Ir_a(I93, COMPARISON) = {EQUALITY_2 -> == COMPARISON °EQUALITY_2, EQUALITY_2 -> °!= COMPARISON EQUALITY_2,
-      EQUALITY_2 -> °== COMPARISON EQUALITY_2, EQUALITY_2 -> °} = I118      ☑
+      EQUALITY_2 -> °== COMPARISON EQUALITY_2, EQUALITY_2 -> °} = I118      ☑       ☑
 
 Ir_a(I94, TERM) = {COMPARISON_2 -> >= TERM °COMPARISON_2, COMPARISON_2 -> °> TERM COMPARISON_2,
       COMPARISON_2 -> °>= TERM COMPARISON_2, COMPARISON_2 -> °< TERM COMPARISON_2,
-      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I119      ☑
+      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I119      ☑       ☑
 
-Ir_a(I95, COMPARISON_2) = {COMPARISON_2 -> > TERM COMPARISON_2°} = I120     ☑
+Ir_a(I95, COMPARISON_2) = {COMPARISON_2 -> > TERM COMPARISON_2°} = I120     ☑       ☑
 
-Ir_a(I95, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65        ☑
+Ir_a(I95, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65        ☑       ☑
 
-Ir_a(I95, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66        ☑
+Ir_a(I95, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66        ☑       ☑
 
 Ir_a(I96, TERM) = {COMPARISON_2 -> <= TERM °COMPARISON_2, COMPARISON_2 -> °> TERM COMPARISON_2,
       COMPARISON_2 -> °>= TERM COMPARISON_2, COMPARISON_2 -> °< TERM COMPARISON_2,
-      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I121      ☑
+      COMPARISON_2 -> °<= TERM COMPARISON_2, COMPARISON_2 -> °} = I121      ☑       ☑
 
-Ir_a(I97, COMPARISON_2) = {COMPARISON_2 -> < TERM COMPARISON_2°} = I122     ☑
+Ir_a(I97, COMPARISON_2) = {COMPARISON_2 -> < TERM COMPARISON_2°} = I122     ☑       ☑
 
-Ir_a(I97, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65        ☑
+Ir_a(I97, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65        ☑       ☑
 
-Ir_a(I97, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66        ☑
+Ir_a(I97, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66        ☑       ☑
 
-Ir_a(I98, TERM_2) = {TERM_2 -> - FACTOR TERM_2°} = I123     ☑
+Ir_a(I98, TERM_2) = {TERM_2 -> - FACTOR TERM_2°} = I123     ☑       ☑
 
-Ir_a(I98, -) = {TERM_2 -> - °FACTOR TERM_2, ...} = I68      ☑
+Ir_a(I98, -) = {TERM_2 -> - °FACTOR TERM_2, ...} = I68      ☑       ☑
 
-Ir_a(I98, +) = {TERM_2 -> + °FACTOR TERM_2, ...} = I69      ☑
+Ir_a(I98, +) = {TERM_2 -> + °FACTOR TERM_2, ...} = I69      ☑       ☑
 
-Ir_a(I99, TERM_2) = {TERM_2 -> + FACTOR TERM_2°} = I124     ☑
+Ir_a(I99, TERM_2) = {TERM_2 -> + FACTOR TERM_2°} = I124     ☑       ☑
 
-Ir_a(I99, -) = {TERM_2 -> - °FACTOR TERM_2, ...} = I68      ☑
+Ir_a(I99, -) = {TERM_2 -> - °FACTOR TERM_2, ...} = I68      ☑       ☑
 
-Ir_a(I99, +) = {TERM_2 -> + °FACTOR TERM_2, ...} = I69      ☑
+Ir_a(I99, +) = {TERM_2 -> + °FACTOR TERM_2, ...} = I69      ☑       ☑
 
-Ir_a(I100, FACTOR_2) = {FACTOR_2 -> / UNARY FACTOR_2°} = I125       ☑
+Ir_a(I100, FACTOR_2) = {FACTOR_2 -> / UNARY FACTOR_2°} = I125       ☑       ☑
 
-Ir_a(I100, /) = {FACTOR_2 -> / °UNARY FACTOR_2, ...} = I71      ☑
+Ir_a(I100, /) = {FACTOR_2 -> / °UNARY FACTOR_2, ...} = I71      ☑       ☑
 
-Ir_a(I100, *) = {FACTOR_2 -> * °UNARY FACTOR_2, ...} = I72      ☑
+Ir_a(I100, *) = {FACTOR_2 -> * °UNARY FACTOR_2, ...} = I72      ☑       ☑
 
-Ir_a(I101, FACTOR_2) = {FACTOR_2 -> * UNARY FACTOR_2°} = I126       ☑
+Ir_a(I101, FACTOR_2) = {FACTOR_2 -> * UNARY FACTOR_2°} = I126       ☑       ☑
 
-Ir_a(I101, /) = {FACTOR_2 -> / °UNARY FACTOR_2, ...} = I71      ☑
+Ir_a(I101, /) = {FACTOR_2 -> / °UNARY FACTOR_2, ...} = I71      ☑       ☑
 
-Ir_a(I101, *) = {FACTOR_2 -> * °UNARY FACTOR_2, ...} = I72      ☑
+Ir_a(I101, *) = {FACTOR_2 -> * °UNARY FACTOR_2, ...} = I72      ☑       ☑
 
-Ir_a(I102, ')') = {CALL_2 -> (ARGUMENTS_OPC)°} = I127       ☑
+Ir_a(I102, ')') = {CALL_2 -> (ARGUMENTS_OPC)°} = I127       ☑       ☑
 
-Ir_a(I103, ARGUMENTS) = {ARGUMENTS_OPC -> EXPRESSION ARGUMENTS°} = I128     ☑
+Ir_a(I103, ARGUMENTS) = {ARGUMENTS_OPC -> EXPRESSION ARGUMENTS°} = I128     ☑       ☑
 
 Ir_a(I103, ',') = {ARGUMENTS -> , °EXPRESSION ARGUMENTS, EXPRESSION -> °ASSIGNMENT, ASSIGNMENT -> °LOGIC_OR ASSIGNMENT_OPC,
       LOGIC_OR -> °LOGIC_AND LOGIC_OR_2, LOGIC_AND -> °EQUALITY LOGIC_AND_2,
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I129      ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I129      ☑       ☑
 
-Ir_a(I105, ')') = {FUNCTION -> id(PARAMETERS_OPC) °BLOCK, BLOCK -> °{DECLARATION}} = I130       ☑
+Ir_a(I105, ')') = {FUNCTION -> id(PARAMETERS_OPC) °BLOCK, BLOCK -> °{DECLARATION}} = I130       ☑       ☑
 
-Ir_a(I107, PARAMETERS_2) = {PARAMETERS -> id PARAMETERS_2°} = I131      ☑
+Ir_a(I107, PARAMETERS_2) = {PARAMETERS -> id PARAMETERS_2°} = I131      ☑       ☑
 
-Ir_a(I107, ',') = {PARAMETERS_2 -> , °id PARAMETERS_2} = I132       ☑
+Ir_a(I107, ',') = {PARAMETERS_2 -> , °id PARAMETERS_2} = I132       ☑       ☑
 
-Ir_a(I110, FOR_STMT_3) = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3°) STATEMENT} = I133      ☑
+Ir_a(I110, FOR_STMT_3) = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3°) STATEMENT} = I133      ☑       ☑
 
-Ir_a(I110, EXPRESSION) = {FOR_STMT_3 -> EXPRESSION°} = I134     ☑
+Ir_a(I110, EXPRESSION) = {FOR_STMT_3 -> EXPRESSION°} = I134     ☑       ☑
 
-Ir_a(I111, ;) = {FOR_STMT_2 -> EXPRESSION;°} = I135     ☑
+Ir_a(I111, ;) = {FOR_STMT_2 -> EXPRESSION;°} = I135     ☑       ☑
 
 Ir_a(I113, STATEMENT) = {IF_STMT -> if(EXPRESSION) STATEMENT °ELSE_STATEMENT, ELSE_STATEMENT -> °else STATEMENT,
-      ELSE_STATEMENT -> °} = I136       ☑
+      ELSE_STATEMENT -> °} = I136       ☑       ☑
 
-Ir_a(I114, STATEMENT) = {WHILE_STMT -> while(EXPRESSION) STATEMENT°} = I137     ☑
+Ir_a(I114, STATEMENT) = {WHILE_STMT -> while(EXPRESSION) STATEMENT°} = I137     ☑       ☑
 
-Ir_a(I117, EQUALITY_2) = {EQUALITY_2 -> != COMPARISON EQUALITY_2°} = I138       ☑
+Ir_a(I117, EQUALITY_2) = {EQUALITY_2 -> != COMPARISON EQUALITY_2°} = I138       ☑       ☑
 
-Ir_a(I117, !) = {EQUALITY_2 -> !°= COMPARISON EQUALITY_2} = I62     ☑
+Ir_a(I117, !) = {EQUALITY_2 -> !°= COMPARISON EQUALITY_2} = I62     ☑       ☑
 
-Ir_a(I117, =) = {EQUALITY_2 -> =°= COMPARISON EQUALITY_2} = I63     ☑
+Ir_a(I117, =) = {EQUALITY_2 -> =°= COMPARISON EQUALITY_2} = I63     ☑       ☑
 
-Ir_a(I118, EQUALITY_2) = {EQUALITY_2 -> == COMPARISON EQUALITY_2°} = I139       ☑
+Ir_a(I118, EQUALITY_2) = {EQUALITY_2 -> == COMPARISON EQUALITY_2°} = I139       ☑       ☑
 
-Ir_a(I118, !) = {EQUALITY_2 -> !°= COMPARISON EQUALITY_2} = I62     ☑
+Ir_a(I118, !) = {EQUALITY_2 -> !°= COMPARISON EQUALITY_2} = I62     ☑       ☑
 
-Ir_a(I118, =) = {EQUALITY_2 -> =°= COMPARISON EQUALITY_2} = I63     ☑
+Ir_a(I118, =) = {EQUALITY_2 -> =°= COMPARISON EQUALITY_2} = I63     ☑       ☑
 
-Ir_a(I119, COMPARISON_2) = {COMPARISON_2 -> >= TERM COMPARISON_2°} = I140       ☑
+Ir_a(I119, COMPARISON_2) = {COMPARISON_2 -> >= TERM COMPARISON_2°} = I140       ☑       ☑
 
-Ir_a(I119, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65       ☑
+Ir_a(I119, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65       ☑       ☑
 
-Ir_a(I119, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66       ☑
+Ir_a(I119, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66       ☑       ☑
 
-Ir_a(I121, COMPARISON_2) = {COMPARISON_2 -> <= TERM COMPARISON_2°} = I141       ☑
+Ir_a(I121, COMPARISON_2) = {COMPARISON_2 -> <= TERM COMPARISON_2°} = I141       ☑       ☑
 
-Ir_a(I121, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65       ☑
+Ir_a(I121, >) = {COMPARISON_2 -> > °TERM COMPARISON_2, ...} = I65       ☑       ☑
 
-Ir_a(I121, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66       ☑
+Ir_a(I121, <) = {COMPARISON_2 -> < °TERM COMPARISON_2, ...} = I66       ☑       ☑
 
-Ir_a(I129, EXPRESSION) = {ARGUMENTS -> , EXPRESSION °ARGUMENTS, ARGUMENTS -> °, EXPRESSION ARGUMENTS} = I142        ☑
+Ir_a(I129, EXPRESSION) = {ARGUMENTS -> , EXPRESSION °ARGUMENTS, ARGUMENTS -> °, EXPRESSION ARGUMENTS} = I142        ☑       ☑
 
-Ir_a(I130, BLOCK) = {FUNCTION -> id(PARAMETERS_OPC) BLOCK°} = I143      ☑
+Ir_a(I130, BLOCK) = {FUNCTION -> id(PARAMETERS_OPC) BLOCK°} = I143      ☑       ☑
 
-Ir_a(I130, '{') = {BLOCK -> {°DECLARATION}, ...} = I21      ☑
+Ir_a(I130, '{') = {BLOCK -> {°DECLARATION}, ...} = I21      ☑       ☑
 
-Ir_a(I132, id) = {PARAMETERS_2 -> , id °PARAMETERS_2, PARAMETERS_2 -> °, id PARAMETERS_2} = I144        ☑
+Ir_a(I132, id) = {PARAMETERS_2 -> , id °PARAMETERS_2, PARAMETERS_2 -> °, id PARAMETERS_2} = I144        ☑       ☑
 
 Ir_a(I133, ')') = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) °STATEMENT, STATEMENT -> °EXPR_STMT,
       STATEMENT -> °FOR_STMT, STATEMENT -> °IF_STMT, STATEMENT -> °PRINT_STMT, STATEMENT -> °RETURN_STMT,
@@ -1054,9 +1054,9 @@ Ir_a(I133, ')') = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) °STATEMENT
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I145
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I145      ☑       ☑
 
-Ir_a(I136, ELSE_STATEMENT) = {IF_STMT -> if(EXPRESSION) STATEMENT ELSE_STATEMENT°} = I146       ☑
+Ir_a(I136, ELSE_STATEMENT) = {IF_STMT -> if(EXPRESSION) STATEMENT ELSE_STATEMENT°} = I146       ☑       ☑
 
 Ir_a(I136, else) = {ELSE_STATEMENT -> else °STATEMENT, STATEMENT -> °EXPR_STMT,
       STATEMENT -> °FOR_STMT, STATEMENT -> °IF_STMT, STATEMENT -> °PRINT_STMT, STATEMENT -> °RETURN_STMT,
@@ -1069,16 +1069,16 @@ Ir_a(I136, else) = {ELSE_STATEMENT -> else °STATEMENT, STATEMENT -> °EXPR_STMT
       EQUALITY -> °COMPARISON EQUALITY_2, COMPARISON -> °TERM COMPARISON_2, TERM -> °FACTOR TERM_2,
       FACTOR -> °UNARY FACTOR_2, UNARY -> °!UNARY, UNARY -> °-UNARY, UNARY -> °CALL,
       CALL -> °PRIMARY CALL_2, PRIMARY -> °true, PRIMARY -> °false, PRIMARY -> °null, PRIMARY -> °number,
-      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I147      ☑
+      PRIMARY -> °string, PRIMARY -> °id, PRIMARY -> °(EXPRESSION)} = I147      ☑       ☑
 
-Ir_a(I142, ARGUMENTS) = {ARGUMENTS -> , EXPRESSION ARGUMENTS°} = I148       ☑
+Ir_a(I142, ARGUMENTS) = {ARGUMENTS -> , EXPRESSION ARGUMENTS°} = I148       ☑       ☑
 
-Ir_a(I142, ',') = {ARGUMENTS -> , °EXPRESSION ARGUMENTS, ...} = I129        ☑
+Ir_a(I142, ',') = {ARGUMENTS -> , °EXPRESSION ARGUMENTS, ...} = I129        ☑       ☑
 
-Ir_a(I144, PARAMETERS_2) = {PARAMETERS_2 -> , id PARAMETERS_2°} = I149      ☑
+Ir_a(I144, PARAMETERS_2) = {PARAMETERS_2 -> , id PARAMETERS_2°} = I149      ☑       ☑
 
-Ir_a(I144, ',') = {PARAMETERS_2 -> , °id PARAMETERS_2} = I132       ☑
+Ir_a(I144, ',') = {PARAMETERS_2 -> , °id PARAMETERS_2} = I132       ☑       ☑
 
-Ir_a(I145, STATEMENT) = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT°} = I150       ☑
+Ir_a(I145, STATEMENT) = {FOR_STMT -> for(FOR_STMT_1 FOR_STMT_2 FOR_STMT_3) STATEMENT°} = I150       ☑       ☑
 
 Ir_a(I147, STATEMENT) = {ELSE_STATEMENT -> else STATEMENT°} = I151      ☑
