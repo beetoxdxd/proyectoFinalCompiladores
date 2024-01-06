@@ -371,6 +371,7 @@ public class Scanner {
             Interprete.error(linea, "Se ha detectado un salto de línea sin haber completado la cadena, cuando no debería de haber.");
         }
 
+        tokens.add(new Token(TipoToken.EOF, "", source.length()));
 
         return tokens;
     }

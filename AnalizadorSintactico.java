@@ -23,6 +23,7 @@ public class AnalizadorSintactico implements Parser{
         pila.push(0);
 
         while(i < tokens.size()){
+            System.out.println("Pila: " + pila.peek() + ", i: " + i + ", reduccion: " + reduccion + ", preanalisis: " + preanalisis.tipo);
             if(pila.peek().equals(0)){
                 if(reduccion != 0){
                     switch (reduccion){
@@ -1109,15 +1110,10 @@ public class AnalizadorSintactico implements Parser{
                     }
                 }
             } else if(pila.peek().equals(50)){
-                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR || preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF ||
-                        preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
-                        preanalisis.tipo == TipoToken.NULL || preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
-                        preanalisis.tipo == TipoToken.EOF){
-                    pila.pop(); pila.pop(); pila.pop();
-                    reduccion = 14;
+                if(preanalisis.tipo == TipoToken.SEMICOLON){
+                    pila.push(152); next();
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ';'");
                     return false;
                 }
             } else if(pila.peek().equals(51)){
@@ -2682,7 +2678,7 @@ public class AnalizadorSintactico implements Parser{
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 36;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba '!', '*', '-', '+', '>', '<', '!', 'and', 'or', '=', ';', ')' o ','");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '/', '*', '-', '+', '>', '<', '!', 'and', 'or', '=', ';', ')' o ','");
                     return false;
                 }
             } else if(pila.peek().equals(128)){
@@ -2694,51 +2690,424 @@ public class AnalizadorSintactico implements Parser{
                     return false;
                 }
             } else if(pila.peek().equals(129)){
-                copiar 110
+                if(reduccion != 0){
+                    switch (reduccion){
+                        case 19: pila.push(142); break;
+                        case 20: pila.push(22); break;
+                        case 22: pila.push(23); break;
+                        case 24: pila.push(24); break;
+                        case 26: pila.push(25); break;
+                        case 28: pila.push(26); break;
+                        case 30: pila.push(27); break;
+                        case 32: pila.push(28); break;
+                        case 34: pila.push(29); break;
+                        case 35: pila.push(32); break;
+                        case 37: pila.push(33); break;
+                        default:
+                            System.out.println("Error en la reducción del estado 129.");
+                            return false;
+                    }
+
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.LEFT_PAREN){
+                        pila.push(40); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG){
+                        pila.push(30); next();
+                    } else if(preanalisis.tipo == TipoToken.MINUS){
+                        pila.push(31); next();
+                    } else if(preanalisis.tipo == TipoToken.TRUE){
+                        pila.push(34); next();
+                    } else if(preanalisis.tipo == TipoToken.FALSE){
+                        pila.push(35); next();
+                    } else if(preanalisis.tipo == TipoToken.NULL){
+                        pila.push(36); next();
+                    } else if(preanalisis.tipo == TipoToken.NUMBER){
+                        pila.push(37); next();
+                    } else if(preanalisis.tipo == TipoToken.STRING){
+                        pila.push(38); next();
+                    } else if(preanalisis.tipo == TipoToken.IDENTIFIER){
+                        pila.push(39); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba '(', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(130)){
+                if(reduccion != 0){
+                    if(reduccion == 18) pila.push(143);
+                    else {
+                        System.out.println("Error en la reducción del estado 130");
+                        return false;
+                    }
 
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.LEFT_BRACE){
+                        pila.push(21); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba '{'");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(131)){
-
+                if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                    pila.pop(); pila.pop();
+                    reduccion = 41;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ')'");
+                    return false;
+                }
             } else if(pila.peek().equals(132)){
-
+                if(preanalisis.tipo == TipoToken.IDENTIFIER){
+                    pila.push(144); next();
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'id'");
+                    return false;
+                }
             } else if(pila.peek().equals(133)){
-
+                if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                    pila.push(145); next();
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ')'");
+                    return false;
+                }
             } else if(pila.peek().equals(134)){
-
+                if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                    pila.pop();
+                    reduccion = 11;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ')'");
+                    return false;
+                }
             } else if(pila.peek().equals(135)){
-
+                if(preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||preanalisis.tipo == TipoToken.FALSE ||
+                        preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||preanalisis.tipo == TipoToken.STRING ||
+                        preanalisis.tipo == TipoToken.IDENTIFIER){
+                    pila.pop(); pila.pop();
+                    reduccion = 10;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '(', ')', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
+                    return false;
+                }
             } else if(pila.peek().equals(136)){
+                if(reduccion != 0){
+                    if(reduccion == 13) pila.push(146);
+                    else {
+                        System.out.println("Error en la reducción del estado 136.");
+                        return false;
+                    }
 
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
+                            preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.PRINT ||
+                            preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                            preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                            preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
+                            preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
+                        reduccion = 13;
+                    } else if(preanalisis.tipo == TipoToken.ELSE){
+                        pila.push(147); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(137)){
-
+                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
+                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
+                        preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
+                        preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 17;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    return false;
+                }
             } else if(pila.peek().equals(138)){
-
+                if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 27;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'and', 'or', '=', ';', ')' o ','");
+                    return false;
+                }
             } else if(pila.peek().equals(139)){
-
+                if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 27;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'and', 'or', '=', ';', ')' o ','");
+                    return false;
+                }
             } else if(pila.peek().equals(140)){
-
+                if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA ||
+                        preanalisis.tipo == TipoToken.BANG){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 29;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
+                    return false;
+                }
             } else if(pila.peek().equals(141)){
-
+                if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA ||
+                        preanalisis.tipo == TipoToken.BANG){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 29;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
+                    return false;
+                }
             } else if(pila.peek().equals(142)){
+                if(reduccion != 0){
+                    if(reduccion == 44) pila.push(148);
+                    else {
+                        System.out.println("Error en la reducción del estado 142");
+                        return false;
+                    }
 
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.COMMA){
+                        pila.push(129); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba ','");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(143)){
-
+                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
+                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.PRINT ||
+                        preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
+                        preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 38;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    return false;
+                }
             } else if(pila.peek().equals(144)){
+                if(reduccion != 0){
+                    if(reduccion == 42) pila.push(149);
+                    else {
+                        System.out.println("Error en la reducción del estado 144");
+                        return false;
+                    }
 
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.COMMA){
+                        pila.push(132); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba ','");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(145)){
+                if(reduccion != 0){
+                    switch (reduccion){
+                        case 6: pila.push(150); break;
+                        case 7: pila.push(8); break;
+                        case 8: pila.push(9); break;
+                        case 12: pila.push(10); break;
+                        case 14: pila.push(11); break;
+                        case 15: pila.push(12); break;
+                        case 17: pila.push(13); break;
+                        case 18: pila.push(14); break;
+                        case 19: pila.push(15); break;
+                        case 20: pila.push(22); break;
+                        case 22: pila.push(23); break;
+                        case 24: pila.push(24); break;
+                        case 26: pila.push(25); break;
+                        case 28: pila.push(26); break;
+                        case 30: pila.push(27); break;
+                        case 32: pila.push(28); break;
+                        case 34: pila.push(29); break;
+                        case 35: pila.push(32); break;
+                        case 37: pila.push(33); break;
+                        default:
+                            System.out.println("Error en la reducción del estado 145.");
+                            return false;
+                    }
 
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.FOR){
+                        pila.push(16); next();
+                    } else if(preanalisis.tipo == TipoToken.LEFT_PAREN){
+                        pila.push(40); next();
+                    } else if(preanalisis.tipo == TipoToken.IF){
+                        pila.push(17); next();
+                    } else if(preanalisis.tipo == TipoToken.PRINT){
+                        pila.push(18); next();
+                    } else if(preanalisis.tipo == TipoToken.RETURN){
+                        pila.push(19); next();
+                    } else if(preanalisis.tipo == TipoToken.WHILE){
+                        pila.push(20); next();
+                    } else if(preanalisis.tipo == TipoToken.LEFT_BRACE){
+                        pila.push(21); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG){
+                        pila.push(30); next();
+                    } else if(preanalisis.tipo == TipoToken.MINUS){
+                        pila.push(31); next();
+                    } else if(preanalisis.tipo == TipoToken.TRUE){
+                        pila.push(34); next();
+                    } else if(preanalisis.tipo == TipoToken.FALSE){
+                        pila.push(35); next();
+                    } else if(preanalisis.tipo == TipoToken.NULL){
+                        pila.push(36); next();
+                    } else if(preanalisis.tipo == TipoToken.NUMBER){
+                        pila.push(37); next();
+                    } else if(preanalisis.tipo == TipoToken.STRING){
+                        pila.push(38); next();
+                    } else if(preanalisis.tipo == TipoToken.IDENTIFIER){
+                        pila.push(39); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(146)){
-
+                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
+                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
+                        preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
+                        preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 12;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    return false;
+                }
             } else if(pila.peek().equals(147)){
+                if(reduccion != 0){
+                    switch (reduccion){
+                        case 6: pila.push(151); break;
+                        case 7: pila.push(8); break;
+                        case 8: pila.push(9); break;
+                        case 12: pila.push(10); break;
+                        case 14: pila.push(11); break;
+                        case 15: pila.push(12); break;
+                        case 17: pila.push(13); break;
+                        case 18: pila.push(14); break;
+                        case 19: pila.push(15); break;
+                        case 20: pila.push(22); break;
+                        case 22: pila.push(23); break;
+                        case 24: pila.push(24); break;
+                        case 26: pila.push(25); break;
+                        case 28: pila.push(26); break;
+                        case 30: pila.push(27); break;
+                        case 32: pila.push(28); break;
+                        case 34: pila.push(29); break;
+                        case 35: pila.push(32); break;
+                        case 37: pila.push(33); break;
+                        default:
+                            System.out.println("Error en la reducción del estado 147.");
+                            return false;
+                    }
 
+                    reduccion = 0;
+                } else {
+                    if(preanalisis.tipo == TipoToken.FOR){
+                        pila.push(16); next();
+                    } else if(preanalisis.tipo == TipoToken.LEFT_PAREN){
+                        pila.push(40); next();
+                    } else if(preanalisis.tipo == TipoToken.IF){
+                        pila.push(17); next();
+                    } else if(preanalisis.tipo == TipoToken.PRINT){
+                        pila.push(18); next();
+                    } else if(preanalisis.tipo == TipoToken.RETURN){
+                        pila.push(19); next();
+                    } else if(preanalisis.tipo == TipoToken.WHILE){
+                        pila.push(20); next();
+                    } else if(preanalisis.tipo == TipoToken.LEFT_BRACE){
+                        pila.push(21); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG){
+                        pila.push(30); next();
+                    } else if(preanalisis.tipo == TipoToken.MINUS){
+                        pila.push(31); next();
+                    } else if(preanalisis.tipo == TipoToken.TRUE){
+                        pila.push(34); next();
+                    } else if(preanalisis.tipo == TipoToken.FALSE){
+                        pila.push(35); next();
+                    } else if(preanalisis.tipo == TipoToken.NULL){
+                        pila.push(36); next();
+                    } else if(preanalisis.tipo == TipoToken.NUMBER){
+                        pila.push(37); next();
+                    } else if(preanalisis.tipo == TipoToken.STRING){
+                        pila.push(38); next();
+                    } else if(preanalisis.tipo == TipoToken.IDENTIFIER){
+                        pila.push(39); next();
+                    } else {
+                        System.out.println("ERROR ENCONTRADO: Se esperaba 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
+                        return false;
+                    }
+                }
             } else if(pila.peek().equals(148)){
-
+                if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                    pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 44;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ')'");
+                    return false;
+                }
             } else if(pila.peek().equals(149)){
-
+                if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                    pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 42;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ')'");
+                    return false;
+                }
             } else if(pila.peek().equals(150)){
-
+                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
+                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
+                        preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
+                        preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
+                    pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 8;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    return false;
+                }
             } else if(pila.peek().equals(151)){
-
+                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
+                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
+                        preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
+                        preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
+                    pila.pop(); pila.pop();
+                    reduccion = 13;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    return false;
+                }
+            } else if(pila.peek().equals(152)){
+                if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR || preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF ||
+                        preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
+                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
+                        preanalisis.tipo == TipoToken.NULL || preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
+                        preanalisis.tipo == TipoToken.EOF){
+                    pila.pop(); pila.pop(); pila.pop();
+                    reduccion = 14;
+                } else {
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    return false;
+                }
             }
         }
 
