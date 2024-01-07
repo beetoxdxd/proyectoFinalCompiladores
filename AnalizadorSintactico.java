@@ -66,7 +66,9 @@ public class AnalizadorSintactico implements Parser{
                     else if(preanalisis.tipo == TipoToken.RETURN){ pila.push(19); next();}
                     else if(preanalisis.tipo == TipoToken.WHILE){ pila.push(20); next();}
                     else if(preanalisis.tipo == TipoToken.LEFT_BRACE){ pila.push(21); next();}
-                    else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
+                    else if(preanalisis.tipo == TipoToken.RIGHT_BRACE){
+                        reduccion = 2;
+                    } else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
                     else if(preanalisis.tipo == TipoToken.MINUS){ pila.push(31); next();}
                     else if(preanalisis.tipo == TipoToken.TRUE){ pila.push(34); next();}
                     else if(preanalisis.tipo == TipoToken.FALSE){ pila.push(35); next();}
@@ -138,7 +140,9 @@ public class AnalizadorSintactico implements Parser{
                     else if(preanalisis.tipo == TipoToken.RETURN){ pila.push(19); next();}
                     else if(preanalisis.tipo == TipoToken.WHILE){ pila.push(20); next();}
                     else if(preanalisis.tipo == TipoToken.LEFT_BRACE){ pila.push(21); next();}
-                    else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
+                    else if(preanalisis.tipo == TipoToken.RIGHT_BRACE){
+                        reduccion = 2;
+                    } else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
                     else if(preanalisis.tipo == TipoToken.MINUS){ pila.push(31); next();}
                     else if(preanalisis.tipo == TipoToken.TRUE){ pila.push(34); next();}
                     else if(preanalisis.tipo == TipoToken.FALSE){ pila.push(35); next();}
@@ -194,7 +198,9 @@ public class AnalizadorSintactico implements Parser{
                     else if(preanalisis.tipo == TipoToken.RETURN){ pila.push(19); next();}
                     else if(preanalisis.tipo == TipoToken.WHILE){ pila.push(20); next();}
                     else if(preanalisis.tipo == TipoToken.LEFT_BRACE){ pila.push(21); next();}
-                    else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
+                    else if(preanalisis.tipo == TipoToken.RIGHT_BRACE){
+                        reduccion = 2;
+                    } else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
                     else if(preanalisis.tipo == TipoToken.MINUS){ pila.push(31); next();}
                     else if(preanalisis.tipo == TipoToken.TRUE){ pila.push(34); next();}
                     else if(preanalisis.tipo == TipoToken.FALSE){ pila.push(35); next();}
@@ -250,7 +256,9 @@ public class AnalizadorSintactico implements Parser{
                     else if(preanalisis.tipo == TipoToken.RETURN){ pila.push(19); next();}
                     else if(preanalisis.tipo == TipoToken.WHILE){ pila.push(20); next();}
                     else if(preanalisis.tipo == TipoToken.LEFT_BRACE){ pila.push(21); next();}
-                    else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
+                    else if(preanalisis.tipo == TipoToken.RIGHT_BRACE){
+                        reduccion = 2;
+                    } else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
                     else if(preanalisis.tipo == TipoToken.MINUS){ pila.push(31); next();}
                     else if(preanalisis.tipo == TipoToken.TRUE){ pila.push(34); next();}
                     else if(preanalisis.tipo == TipoToken.FALSE){ pila.push(35); next();}
@@ -289,98 +297,98 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(9)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(10)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(11)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(12)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(13)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(14)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop();
                     reduccion = 6;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(15)){
@@ -452,7 +460,7 @@ public class AnalizadorSintactico implements Parser{
                 if(reduccion != 0){
                     switch (reduccion){
                         case 16: pila.push(51); break;
-                        case 19: pila.push(50); break;
+                        case 19: pila.push(52); break;
                         case 20: pila.push(22); break;
                         case 22: pila.push(23); break;
                         case 24: pila.push(24); break;
@@ -543,7 +551,9 @@ public class AnalizadorSintactico implements Parser{
                     else if(preanalisis.tipo == TipoToken.RETURN){ pila.push(19); next();}
                     else if(preanalisis.tipo == TipoToken.WHILE){ pila.push(20); next();}
                     else if(preanalisis.tipo == TipoToken.LEFT_BRACE){ pila.push(21); next();}
-                    else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
+                    else if(preanalisis.tipo == TipoToken.RIGHT_BRACE){
+                        reduccion = 2;
+                    }else if(preanalisis.tipo == TipoToken.BANG){ pila.push(30); next();}
                     else if(preanalisis.tipo == TipoToken.MINUS){ pila.push(31); next();}
                     else if(preanalisis.tipo == TipoToken.TRUE){ pila.push(34); next();}
                     else if(preanalisis.tipo == TipoToken.FALSE){ pila.push(35); next();}
@@ -635,13 +645,13 @@ public class AnalizadorSintactico implements Parser{
 
                     reduccion = 0;
                 } else {
-                    if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR ||
-                            preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
+                    if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 27;
-                    } else if(preanalisis.tipo == TipoToken.BANG){
-                        pila.push(62); next();
-                    } else if(preanalisis.tipo == TipoToken.EQUAL){
-                        pila.push(63); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG_EQUAL){
+                        pila.push(92); next();
+                    } else if(preanalisis.tipo == TipoToken.EQUAL_EQUAL){
+                        pila.push(93); next();
                     } else {
                         System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
                         return false;
@@ -665,6 +675,10 @@ public class AnalizadorSintactico implements Parser{
                         pila.push(65); next();
                     } else if(preanalisis.tipo == TipoToken.LESS){
                         pila.push(66); next();
+                    } else if(preanalisis.tipo == TipoToken.GREATER_EQUAL){
+                        pila.push(94); next();
+                    } else if(preanalisis.tipo == TipoToken.LESS_EQUAL){
+                        pila.push(96); next();
                     } else {
                         System.out.println("ERROR ENCONTRADO: Se esperaba '>', '<', '!', 'and', 'or', '=', ';', ')' o ','");
                         return false;
@@ -941,39 +955,39 @@ public class AnalizadorSintactico implements Parser{
                     }
                 }
             } else if(pila.peek().equals(41)){
-                if(preanalisis.tipo == TipoToken.EOF){
+                if(preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop();
                     reduccion = 2;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba '$'.");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '}' o '$'.");
                     return false;
                 }
             } else if(pila.peek().equals(42)){
-                if(preanalisis.tipo == TipoToken.EOF){
+                if(preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop();
                     reduccion = 2;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba '$'.");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '}' o '$'.");
                     return false;
                 }
             } else if(pila.peek().equals(43)){
-                if(preanalisis.tipo == TipoToken.EOF){
+                if(preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop();
                     reduccion = 2;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba '$'.");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba '}' o '$'.");
                     return false;
                 }
             } else if(pila.peek().equals(44)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR || preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
                         preanalisis.tipo == TipoToken.NULL || preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop();
                     reduccion = 3;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(45)){
@@ -1005,13 +1019,13 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(47)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR || preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF ||
                         preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
                         preanalisis.tipo == TipoToken.NULL || preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop();
                     reduccion = 7;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(48)){
@@ -1343,19 +1357,9 @@ public class AnalizadorSintactico implements Parser{
                     return false;
                 }
             } else if(pila.peek().equals(62)){
-                if(preanalisis.tipo == TipoToken.EQUAL){
-                    pila.push(92); next();
-                } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba '='");
-                    return false;
-                }
+
             } else if(pila.peek().equals(63)){
-                if(preanalisis.tipo == TipoToken.EQUAL){
-                    pila.push(93); next();
-                } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba '='");
-                    return false;
-                }
+
             } else if(pila.peek().equals(64)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
@@ -1381,9 +1385,7 @@ public class AnalizadorSintactico implements Parser{
 
                     reduccion = 0;
                 } else {
-                    if(preanalisis.tipo == TipoToken.EQUAL){
-                        pila.push(94); next();
-                    } else if(preanalisis.tipo == TipoToken.LEFT_PAREN){
+                    if(preanalisis.tipo == TipoToken.LEFT_PAREN){
                         pila.push(40); next();
                     } else if(preanalisis.tipo == TipoToken.BANG){
                         pila.push(30); next();
@@ -1402,24 +1404,45 @@ public class AnalizadorSintactico implements Parser{
                     } else if(preanalisis.tipo == TipoToken.IDENTIFIER){
                         pila.push(39); next();
                     } else {
-                        System.out.println("ERROR ENCONTRADO: Se esperaba '=', '(', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
+                        System.out.println("ERROR ENCONTRADO: Se esperaba '(', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
                         return false;
                     }
                 }
             } else if(pila.peek().equals(66)){
                 if(reduccion != 0){
-                    if(reduccion == 30) pila.push(97);
-                    else {
-                        System.out.println("Error en la reducción del estado 66");
-                        return false;
+                    switch (reduccion){
+                        case 30: pila.push(97); break;
+                        case 32: pila.push(28); break;
+                        case 34: pila.push(29); break;
+                        case 35: pila.push(32); break;
+                        case 37: pila.push(33); break;
+                        default:
+                            System.out.println("Error en la reducción del estado 66.");
+                            return false;
                     }
 
                     reduccion = 0;
                 } else {
-                    if(preanalisis.tipo == TipoToken.EQUAL){
-                        pila.push(96); next();
+                    if(preanalisis.tipo == TipoToken.LEFT_PAREN){
+                        pila.push(40); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG){
+                        pila.push(30); next();
+                    } else if(preanalisis.tipo == TipoToken.MINUS){
+                        pila.push(31); next();
+                    } else if(preanalisis.tipo == TipoToken.TRUE){
+                        pila.push(34); next();
+                    } else if(preanalisis.tipo == TipoToken.FALSE){
+                        pila.push(35); next();
+                    } else if(preanalisis.tipo == TipoToken.NULL){
+                        pila.push(36); next();
+                    } else if(preanalisis.tipo == TipoToken.NUMBER){
+                        pila.push(37); next();
+                    } else if(preanalisis.tipo == TipoToken.STRING){
+                        pila.push(38); next();
+                    } else if(preanalisis.tipo == TipoToken.IDENTIFIER){
+                        pila.push(39); next();
                     } else {
-                        System.out.println("ERROR ENCONTRADO: Se esperaba '='");
+                        System.out.println("ERROR ENCONTRADO: Se esperaba '(', '!', '-', 'true', 'false', 'null', 'number', 'string' o 'id'");
                         return false;
                     }
                 }
@@ -1842,14 +1865,14 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 15;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(87)){
@@ -1863,14 +1886,14 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 18;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(89)){
@@ -2291,14 +2314,14 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF ||
                         preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE ||
-                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
+                        preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop(); pila.pop();
                     reduccion = 4;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(109)){
@@ -2527,13 +2550,13 @@ public class AnalizadorSintactico implements Parser{
 
                     reduccion = 0;
                 } else {
-                    if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                    if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                             preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 27;
-                    } else if(preanalisis.tipo == TipoToken.EQUAL){
-                        pila.push(63); next();
-                    } else if(preanalisis.tipo == TipoToken.BANG){
-                        pila.push(62); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG_EQUAL){
+                        pila.push(92); next();
+                    } else if(preanalisis.tipo == TipoToken.EQUAL_EQUAL){
+                        pila.push(93); next();
                     } else {
                         System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
                         return false;
@@ -2549,13 +2572,13 @@ public class AnalizadorSintactico implements Parser{
 
                     reduccion = 0;
                 } else {
-                    if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
+                    if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                             preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 27;
-                    } else if(preanalisis.tipo == TipoToken.EQUAL){
-                        pila.push(63); next();
-                    } else if(preanalisis.tipo == TipoToken.BANG){
-                        pila.push(62); next();
+                    } else if(preanalisis.tipo == TipoToken.BANG_EQUAL){
+                        pila.push(92); next();
+                    } else if(preanalisis.tipo == TipoToken.EQUAL_EQUAL){
+                        pila.push(93); next();
                     } else {
                         System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
                         return false;
@@ -2579,6 +2602,10 @@ public class AnalizadorSintactico implements Parser{
                         pila.push(65); next();
                     } else if(preanalisis.tipo == TipoToken.LESS){
                         pila.push(66); next();
+                    } else if(preanalisis.tipo == TipoToken.GREATER_EQUAL){
+                        pila.push(94); next();
+                    } else if(preanalisis.tipo == TipoToken.LESS_EQUAL){
+                        pila.push(96); next();
                     } else {
                         System.out.println("ERROR ENCONTRADO: Se esperaba '>', '<', '!', 'and', 'or', '=', ';', ')' o ','");
                         return false;
@@ -2612,7 +2639,11 @@ public class AnalizadorSintactico implements Parser{
                         pila.push(65); next();
                     } else if(preanalisis.tipo == TipoToken.LESS){
                         pila.push(66); next();
-                    } else {
+                    } else if(preanalisis.tipo == TipoToken.GREATER_EQUAL){
+                        pila.push(94); next();
+                    } else if(preanalisis.tipo == TipoToken.LESS_EQUAL){
+                        pila.push(96); next();
+                    }  else {
                         System.out.println("ERROR ENCONTRADO: Se esperaba '>', '<', '!', 'and', 'or', '=', ';', ')' o ','");
                         return false;
                     }
@@ -2804,14 +2835,14 @@ public class AnalizadorSintactico implements Parser{
                     if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                             preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.PRINT ||
                             preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                            preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                            preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
                             preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
                             preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
                         reduccion = 13;
                     } else if(preanalisis.tipo == TipoToken.ELSE){
                         pila.push(147); next();
                     } else {
-                        System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                        System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                         return false;
                     }
                 }
@@ -2819,19 +2850,19 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
                         preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
                         preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
                         preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
                     reduccion = 17;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(138)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
-                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    pila.pop(); pila.pop(); pila.pop();
                     reduccion = 27;
                 } else {
                     System.out.println("ERROR ENCONTRADO: Se esperaba 'and', 'or', '=', ';', ')' o ','");
@@ -2840,7 +2871,7 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(139)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA){
-                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    pila.pop(); pila.pop(); pila.pop();
                     reduccion = 27;
                 } else {
                     System.out.println("ERROR ENCONTRADO: Se esperaba 'and', 'or', '=', ';', ')' o ','");
@@ -2850,7 +2881,7 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA ||
                         preanalisis.tipo == TipoToken.BANG){
-                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    pila.pop(); pila.pop(); pila.pop();
                     reduccion = 29;
                 } else {
                     System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
@@ -2860,7 +2891,7 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA ||
                         preanalisis.tipo == TipoToken.BANG){
-                    pila.pop(); pila.pop(); pila.pop(); pila.pop();
+                    pila.pop(); pila.pop(); pila.pop();
                     reduccion = 29;
                 } else {
                     System.out.println("ERROR ENCONTRADO: Se esperaba '!', 'and', 'or', '=', ';', ')' o ','");
@@ -2887,13 +2918,13 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.PRINT ||
                         preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
                         preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
                         preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
                     reduccion = 38;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(144)){
@@ -2906,10 +2937,12 @@ public class AnalizadorSintactico implements Parser{
 
                     reduccion = 0;
                 } else {
-                    if(preanalisis.tipo == TipoToken.COMMA){
+                    if(preanalisis.tipo == TipoToken.IDENTIFIER){
                         pila.push(132); next();
+                    } else if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                        reduccion = 42;
                     } else {
-                        System.out.println("ERROR ENCONTRADO: Se esperaba ','");
+                        System.out.println("ERROR ENCONTRADO: Se esperaba 'id' o ')'");
                         return false;
                     }
                 }
@@ -3074,38 +3107,38 @@ public class AnalizadorSintactico implements Parser{
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
                         preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
                         preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
                         preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop(); pila.pop();
                     reduccion = 8;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(151)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR ||
                         preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT ||
                         preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||preanalisis.tipo == TipoToken.TRUE ||
                         preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||preanalisis.tipo == TipoToken.NUMBER ||
                         preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER || preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop();
                     reduccion = 13;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(152)){
                 if(preanalisis.tipo == TipoToken.FUN || preanalisis.tipo == TipoToken.VAR || preanalisis.tipo == TipoToken.FOR || preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.IF ||
                         preanalisis.tipo == TipoToken.ELSE || preanalisis.tipo == TipoToken.PRINT || preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
+                        preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE ||
                         preanalisis.tipo == TipoToken.NULL || preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                         preanalisis.tipo == TipoToken.EOF){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 14;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'else', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             }
