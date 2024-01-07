@@ -668,8 +668,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
-                            preanalisis.tipo == TipoToken.COMMA){
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 29;
                     } else if(preanalisis.tipo == TipoToken.GREATER){
                         pila.push(65); next();
@@ -695,7 +695,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 31;
                     } else if(preanalisis.tipo == TipoToken.MINUS){
@@ -718,7 +719,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                             preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 33;
@@ -805,7 +807,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(32)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||preanalisis.tipo == TipoToken.STAR ||
                         preanalisis.tipo == TipoToken.COMMA){
@@ -826,7 +829,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                             preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||preanalisis.tipo == TipoToken.STAR ||
                             preanalisis.tipo == TipoToken.COMMA){
@@ -841,7 +845,8 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(34)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.LEFT_PAREN ||
                         preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
+                        preanalisis.tipo == TipoToken.BANG_EQUAL ||preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL ||
+                        preanalisis.tipo == TipoToken.LESS_EQUAL || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
                         preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||
                         preanalisis.tipo == TipoToken.STAR || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop();
@@ -853,7 +858,8 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(35)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.LEFT_PAREN ||
                         preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
+                        preanalisis.tipo == TipoToken.BANG_EQUAL ||preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL ||
+                        preanalisis.tipo == TipoToken.LESS_EQUAL || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
                         preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||
                         preanalisis.tipo == TipoToken.STAR || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop();
@@ -865,7 +871,8 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(36)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.LEFT_PAREN ||
                         preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
+                        preanalisis.tipo == TipoToken.BANG_EQUAL ||preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL ||
+                        preanalisis.tipo == TipoToken.LESS_EQUAL || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
                         preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||
                         preanalisis.tipo == TipoToken.STAR || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop();
@@ -877,7 +884,8 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(37)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.LEFT_PAREN ||
                         preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
+                        preanalisis.tipo == TipoToken.BANG_EQUAL ||preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL ||
+                        preanalisis.tipo == TipoToken.LESS_EQUAL || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
                         preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||
                         preanalisis.tipo == TipoToken.STAR || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop();
@@ -889,7 +897,8 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(38)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.LEFT_PAREN ||
                         preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
+                        preanalisis.tipo == TipoToken.BANG_EQUAL ||preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL ||
+                        preanalisis.tipo == TipoToken.LESS_EQUAL || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
                         preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||
                         preanalisis.tipo == TipoToken.STAR || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop();
@@ -901,7 +910,8 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(39)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.LEFT_PAREN ||
                         preanalisis.tipo == TipoToken.RIGHT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND ||
-                        preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
+                        preanalisis.tipo == TipoToken.BANG_EQUAL ||preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL ||
+                        preanalisis.tipo == TipoToken.LESS_EQUAL || preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS ||
                         preanalisis.tipo == TipoToken.MINUS || preanalisis.tipo == TipoToken.PLUS ||preanalisis.tipo == TipoToken.SLASH ||
                         preanalisis.tipo == TipoToken.STAR || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop();
@@ -1362,8 +1372,8 @@ public class AnalizadorSintactico implements Parser{
 
             } else if(pila.peek().equals(64)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
-                        preanalisis.tipo == TipoToken.COMMA){
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop();
                     reduccion = 28;
                 } else {
@@ -1448,7 +1458,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(67)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop();
                     reduccion = 30;
@@ -1532,7 +1543,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(70)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop();
@@ -1615,7 +1627,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(73)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.SLASH || preanalisis.tipo == TipoToken.STAR ||
                         preanalisis.tipo == TipoToken.COMMA){
@@ -1627,7 +1640,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(74)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.SLASH || preanalisis.tipo == TipoToken.STAR ||
                         preanalisis.tipo == TipoToken.COMMA){
@@ -1639,7 +1653,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(75)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.SLASH || preanalisis.tipo == TipoToken.STAR ||
                         preanalisis.tipo == TipoToken.COMMA){
@@ -2071,8 +2086,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
-                            preanalisis.tipo == TipoToken.COMMA){
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 29;
                     } else if(preanalisis.tipo == TipoToken.GREATER){
                         pila.push(65); next();
@@ -2132,8 +2147,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
-                            preanalisis.tipo == TipoToken.COMMA){
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 29;
                     } else if(preanalisis.tipo == TipoToken.GREATER){
                         pila.push(65); next();
@@ -2155,7 +2170,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 31;
                     } else if(preanalisis.tipo == TipoToken.MINUS){
@@ -2178,7 +2194,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 31;
                     } else if(preanalisis.tipo == TipoToken.MINUS){
@@ -2201,7 +2218,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                             preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 33;
@@ -2225,7 +2243,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                             preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                             preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 33;
@@ -2266,7 +2285,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(104)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.SLASH || preanalisis.tipo == TipoToken.STAR ||
                         preanalisis.tipo == TipoToken.COMMA){
@@ -2317,11 +2337,11 @@ public class AnalizadorSintactico implements Parser{
                         preanalisis.tipo == TipoToken.LEFT_BRACE || preanalisis.tipo == TipoToken.RIGHT_BRACE || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                         preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
-                        preanalisis.tipo == TipoToken.EOF){
+                        preanalisis.tipo == TipoToken.EOF || preanalisis.tipo == TipoToken.SEMICOLON){
                     pila.pop(); pila.pop(); pila.pop(); pila.pop();
                     reduccion = 4;
                 } else {
-                    System.out.println("ERROR ENCONTRADO: Se esperaba 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
+                    System.out.println("ERROR ENCONTRADO: Se esperaba ';', 'fun', 'var', 'for', '(', 'if', 'print', 'return', 'while', '{', '}', '!', '-', 'true', 'false', 'null', 'number', 'string', 'id' o '$'");
                     return false;
                 }
             } else if(pila.peek().equals(109)){
@@ -2595,7 +2615,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL ||
                             preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 29;
                     } else if(preanalisis.tipo == TipoToken.GREATER){
@@ -2613,7 +2634,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(120)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL ||
                         preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 29;
@@ -2632,7 +2654,8 @@ public class AnalizadorSintactico implements Parser{
                     reduccion = 0;
                 } else {
                     if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                            preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                            preanalisis.tipo == TipoToken.EQUAL_EQUAL ||
                             preanalisis.tipo == TipoToken.COMMA){
                         reduccion = 29;
                     } else if(preanalisis.tipo == TipoToken.GREATER){
@@ -2650,7 +2673,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(122)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL ||
                         preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 29;
@@ -2660,7 +2684,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(123)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 31;
@@ -2670,7 +2695,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(124)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 31;
@@ -2680,7 +2706,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(125)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop(); pila.pop();
@@ -2691,7 +2718,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(126)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.COMMA){
                     pila.pop(); pila.pop(); pila.pop();
@@ -2702,7 +2730,8 @@ public class AnalizadorSintactico implements Parser{
                 }
             } else if(pila.peek().equals(127)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
-                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG ||
+                        preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.BANG_EQUAL ||
+                        preanalisis.tipo == TipoToken.EQUAL_EQUAL || preanalisis.tipo == TipoToken.GREATER_EQUAL || preanalisis.tipo == TipoToken.LESS_EQUAL ||
                         preanalisis.tipo == TipoToken.GREATER || preanalisis.tipo == TipoToken.LESS || preanalisis.tipo == TipoToken.MINUS ||
                         preanalisis.tipo == TipoToken.PLUS || preanalisis.tipo == TipoToken.SLASH || preanalisis.tipo == TipoToken.STAR ||
                         preanalisis.tipo == TipoToken.COMMA){
@@ -2880,7 +2909,7 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(140)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA ||
-                        preanalisis.tipo == TipoToken.BANG){
+                        preanalisis.tipo == TipoToken.BANG_EQUAL || preanalisis.tipo == TipoToken.EQUAL_EQUAL){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 29;
                 } else {
@@ -2890,7 +2919,7 @@ public class AnalizadorSintactico implements Parser{
             } else if(pila.peek().equals(141)){
                 if(preanalisis.tipo == TipoToken.SEMICOLON || preanalisis.tipo == TipoToken.EQUAL || preanalisis.tipo == TipoToken.RIGHT_PAREN ||
                         preanalisis.tipo == TipoToken.OR || preanalisis.tipo == TipoToken.AND || preanalisis.tipo == TipoToken.COMMA ||
-                        preanalisis.tipo == TipoToken.BANG){
+                        preanalisis.tipo == TipoToken.BANG_EQUAL || preanalisis.tipo == TipoToken.EQUAL_EQUAL){
                     pila.pop(); pila.pop(); pila.pop();
                     reduccion = 29;
                 } else {
@@ -2909,8 +2938,10 @@ public class AnalizadorSintactico implements Parser{
                 } else {
                     if(preanalisis.tipo == TipoToken.COMMA){
                         pila.push(129); next();
+                    } else if(preanalisis.tipo == TipoToken.RIGHT_PAREN){
+                        reduccion = 44;
                     } else {
-                        System.out.println("ERROR ENCONTRADO: Se esperaba ','");
+                        System.out.println("ERROR ENCONTRADO: Se esperaba ',' o ')'");
                         return false;
                     }
                 }
