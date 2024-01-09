@@ -23,7 +23,7 @@ public class AnalizadorSintactico implements Parser{
         pila.push(0);
 
         while(i < tokens.size()){
-            System.out.println("Pila: " + pila.peek() + ", i: " + i + ", reduccion: " + reduccion + ", preanalisis: " + preanalisis.tipo);
+            // System.out.println("Pila: " + pila.peek() + ", i: " + i + ", reduccion: " + reduccion + ", preanalisis: " + preanalisis.tipo);
             if(pila.peek().equals(0)){
                 if(reduccion != 0){
                     switch (reduccion){
@@ -3181,5 +3181,9 @@ public class AnalizadorSintactico implements Parser{
     private void next(){
         i++;
         preanalisis = tokens.get(i);
+    }
+
+    private Token previous() {
+        return this.tokens.get(i - 1);
     }
 }
