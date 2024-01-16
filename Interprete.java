@@ -53,7 +53,7 @@ public class Interprete {
                 System.out.println(token);
             }
             if(!existenErrores){
-                Parser parser = new AnalizadorSintactico(tokens);
+                Parser parser = new sintacticoRecursivo(tokens);
                 parser.parse();
             }
         }
