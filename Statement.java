@@ -1,2 +1,2 @@
-public abstract class Statement {
+abstract class Statement {
 }

@@ -10,7 +10,8 @@ public class StmtIf extends Statement {
     }
 
     public String toString(){
-        if(elseBranch == null) return "if(" + condition +")" + thenBranch;
+        if(elseBranch == null) return "if(" + condition + ")" + thenBranch;
         return "if(" + condition +")" + thenBranch + " else " + elseBranch;
+
     }
 }
