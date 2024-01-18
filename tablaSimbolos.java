@@ -20,5 +20,7 @@ public class tablaSimbolos {
         values.put(identificador, valor);
     }
 
-
+    public String toString(){
+        return values.toString();
+    }
 }
