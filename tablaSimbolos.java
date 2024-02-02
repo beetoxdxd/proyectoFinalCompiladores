@@ -20,6 +20,10 @@ public class tablaSimbolos {
         values.put(identificador, valor);
     }
 
+    void remover(String identificador){
+        values.remove(identificador);
+    }
+
     public String toString(){
         return values.toString();
     }

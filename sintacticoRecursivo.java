@@ -12,6 +12,7 @@ public class sintacticoRecursivo implements Parser {
     private Object value = null;
     private Stack valLeft;
     private Stack identificadores;
+    private List<String> dentroBloque;
 
     public sintacticoRecursivo(List<Token> tokens){
         this.tokens = tokens;
@@ -21,6 +22,7 @@ public class sintacticoRecursivo implements Parser {
         dentroFuncion = new ArrayList<>();
         valLeft = new Stack<>();
         identificadores = new Stack<>();
+        dentroBloque = new ArrayList<>();
     }
 
     @Override
@@ -50,27 +52,27 @@ public class sintacticoRecursivo implements Parser {
     private List<Statement> program(){
         if(hayErrores) return null;
 
-        declaration(statements, tabla);
+        declaration(statements, tabla, false);
         return statements;
     }
 
     // DECLARATION -> FUN_DECL DECLARATION (recibe una lista de statements)
-    private void declaration(List<Statement> stmts, tablaSimbolos t){
+    private void declaration(List<Statement> stmts, tablaSimbolos t, boolean bloq){
         if(hayErrores) return ;
 
         if(preanalisis.tipo == TipoToken.FUN){
             stmts.add(fun_decl(t));
-            declaration(stmts, t);
+            declaration(stmts, t, bloq);
         } else if(preanalisis.tipo == TipoToken.VAR){
-            stmts.add(var_decl(t));
-            declaration(stmts, t);
+            stmts.add(var_decl(t, bloq));
+            declaration(stmts, t, bloq);
         } else if(preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                 preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                 preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS ||
                 preanalisis.tipo == TipoToken.FOR || preanalisis.tipo == TipoToken.IF || preanalisis.tipo == TipoToken.PRINT ||
                 preanalisis.tipo == TipoToken.RETURN || preanalisis.tipo == TipoToken.WHILE || preanalisis.tipo == TipoToken.LEFT_BRACE){
             stmts.add(statement(t));
-            declaration(stmts, t);
+            declaration(stmts, t, bloq);
         }
 
         return ; // En caso de que DECLARATION -> ε (es metodo void)
@@ -83,7 +85,7 @@ public class sintacticoRecursivo implements Parser {
         return function(t);
     }
 
-    private Statement var_decl(tablaSimbolos t){
+    private Statement var_decl(tablaSimbolos t, boolean bloq){
         if(hayErrores) return null;
 
         match(TipoToken.VAR);
@@ -99,6 +101,8 @@ public class sintacticoRecursivo implements Parser {
             semantico = true;
             System.out.println("ERROR SEMÁNTICO ENCONTRADO: La variable " + id + " ya se había declarado.");
         }
+
+        if(bloq) dentroBloque.add(id);
 
         return sv;
     }
@@ -175,7 +179,7 @@ public class sintacticoRecursivo implements Parser {
         if(hayErrores) return null;
 
         if(preanalisis.tipo == TipoToken.VAR){
-            return var_decl(t);
+            return var_decl(t, true);
         } else if(preanalisis.tipo == TipoToken.TRUE || preanalisis.tipo == TipoToken.FALSE || preanalisis.tipo == TipoToken.NULL ||
                 preanalisis.tipo == TipoToken.NUMBER || preanalisis.tipo == TipoToken.STRING || preanalisis.tipo == TipoToken.IDENTIFIER ||
                 preanalisis.tipo == TipoToken.LEFT_PAREN || preanalisis.tipo == TipoToken.BANG || preanalisis.tipo == TipoToken.MINUS){
@@ -291,9 +295,13 @@ public class sintacticoRecursivo implements Parser {
 
         match(TipoToken.LEFT_BRACE);
         List<Statement> st = new ArrayList<>();
-        declaration(st, t);
+        declaration(st, t, true);
         StmtBlock sb = new StmtBlock(st);
         match(TipoToken.RIGHT_BRACE);
+
+        for (String s : dentroBloque) {
+            t.remover(s);// dentroBloque.remove(s);
+        }
 
         return sb;
     }
